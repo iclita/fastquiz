@@ -86,10 +86,9 @@
                         </div> 
                     </div> 
                 </div>
-        </div>
-    </div> 
-
-</section>
+            </div>
+        </div> 
+    </section>
 
     <section id="services" class="parallax-section">
         <div class="container">
@@ -304,29 +303,9 @@
                 <p>{{ date('Y') }} &copy; FastQuiz.net | All Rights Reserved</p> 
             </div> 
         </div> 
-    </footer> <!--/#footer--> 
-
-
-<!--     <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel">
-      <div class="modal-dialog modal-sm" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="loginModalLabel">Log in</h4>
-          </div>
-          <div class="modal-body">
-            <a href="{{ route('redirect') }}?driver=facebook" class="btn btn-block btn-social btn-facebook">
-                <span class="fa fa-facebook"></span> Sign in with Facebook
-            </a>
-            <hr/>
-            <a href="{{ route('redirect') }}?driver=google" class="btn btn-block btn-social btn-google">
-                <span class="fa fa-google"></span> Sign in with Google
-            </a>
-          </div>
-        </div>
-      </div>
-    </div> -->
+    </footer> 
 
     <script type="text/javascript" src="/js/app.js"></script> 
+
 </body>
 </html>
