@@ -14292,11 +14292,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .profile {
-	margin-top: 6px;
+	margin-top: -10px;
 }
 
 .profile .caret {
-    margin-right: 10px;
+    margin-right: 7px;
     margin-left: 5px;
 }
 
@@ -14304,9 +14304,16 @@ h1, h2, h3, h4, h5, h6 {
 	cursor: pointer;
 	padding-top: 7px !important;
     padding-bottom: 8px !important;
+    padding-left: 4px !important;
 }
 
 .dropdown-menu {
-	margin-top: 15px;
+	margin-top: 5px;
+}
+
+.avatar {
+	border-radius: 50%;
+    max-height: 50px;
+    max-width: 50px;
 }
 /*# sourceMappingURL=app.css.map */

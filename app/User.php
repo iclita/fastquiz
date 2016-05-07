@@ -11,7 +11,7 @@ class User extends Authenticatable
      *
      * @var string
      */
-    protected $table = "users";
+    protected $table = 'users';
 
     /**
      * The attributes that are mass assignable.
@@ -19,7 +19,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email'
+        'name', 'email', 'facebook_id', 'avatar'
     ];
 
     /**
@@ -39,13 +39,15 @@ class User extends Authenticatable
      */
     public static function findOrCreate($user)
     {
-        if ($authUser = static::where('email', $user->getEmail())->first()) {
+        if ($authUser = static::where('facebook_id', $user->getId())->first()) {
             return $authUser;
         }
 
         return static::create([
                 'name' => $user->getName(),
                 'email' => $user->getEmail(),
+                'facebook_id' => $user->getId(),
+                'avatar' => $user->getAvatar(),
             ]);
     }
 }

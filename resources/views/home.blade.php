@@ -53,6 +53,7 @@
                         @if (Auth::check())
                         <li class="scroll">
                             <div class="dropdown profile">
+                                <img class="avatar" src="{{ Auth::user()->avatar }}" />
                                 <a class="logout" id="dLabel" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }}<span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="dLabel">
