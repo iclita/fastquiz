@@ -50,4 +50,14 @@ class User extends Authenticatable
                 'avatar' => $user->getAvatar(),
             ]);
     }
+
+    /**
+     * Get the Facebook User profile link.
+     *
+     * @return string
+     */
+    public function getProfile()
+    {
+        return 'https://www.facebook.com/' . $this->facebook_id;
+    }
 }

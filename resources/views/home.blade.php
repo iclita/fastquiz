@@ -57,7 +57,8 @@
                                 <a class="logout" id="dLabel" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }}<span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="dLabel">
-                                    <li class="scroll"><a class="logout" href="{{ route('logout') }}">My Questions</a></li>
+                                    <li class="scroll"><a class="logout" href="{{ Auth::user()->getProfile() }}" target="_blank">Profile</a></li>
+                                    <li class="scroll"><a class="logout" href="{{ route('logout') }}">Questions</a></li>
                                     <li class="scroll"><a class="logout" href="{{ route('logout') }}">Logout</a></li>
                                 </ul>
                             </div>
