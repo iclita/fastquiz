@@ -1540,6 +1540,8 @@ h1, h2, h3, h4, h5, h6 {
 	width: 20%;
 	margin: 0 auto;
 	font-size: 18px;
+	max-width: 260px;
+	min-width: 250px;
 }
 
 .btn-facebook .fa-facebook {
