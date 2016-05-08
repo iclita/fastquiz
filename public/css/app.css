@@ -14322,4 +14322,13 @@ h1, h2, h3, h4, h5, h6 {
     max-height: 50px;
     max-width: 50px;
 }
+
+.message-box {
+	position: fixed;
+	bottom: 2%;
+	right: 2%;
+	padding: 25px;
+    font-weight: bold;
+    font-size: 16px;
+}
 /*# sourceMappingURL=app.css.map */

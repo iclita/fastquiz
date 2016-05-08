@@ -32,7 +32,7 @@ trait UserPresenter {
      */
     public function getAvatar()
     {
-        return 'https://graph.facebook.com/v2.6/' . $this->facebook_id . '/picture?type=normal';
+        return 'https://graph.facebook.com/v2.6/' . $this->facebook_id . '/picture?type=large';
     }
 
 }

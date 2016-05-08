@@ -107,7 +107,13 @@
                 <p>{{ date('Y') }} &copy; FastQuiz.net | All Rights Reserved</p> 
             </div> 
         </div> 
-    </footer> 
+    </footer>
+
+    @if (session()->has('message'))
+    <div class="message-box bg-danger">
+        {{ session('message') }}
+    </div>
+    @endif 
 
     <script type="text/javascript" src="{{ cached_asset('js/app.js') }}"></script> 
 

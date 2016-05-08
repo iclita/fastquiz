@@ -108,4 +108,6 @@ jQuery(document).ready(function(){
 	});
 });
 
-
+setTimeout(function(){
+	$('.message-box').fadeOut('slow');
+}, 5000);

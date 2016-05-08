@@ -65,6 +65,11 @@ class HomeController extends Controller
             return redirect('/');
         }
 
+        // Here we need to make sure the user provided his email
+        if (is_null($user->getEmail())) {
+        	return redirect('/')->with('message', 'We need your email to log you in!');
+        }
+
         $authUser = User::findOrCreate($user);
 
         Auth::login($authUser, true);
