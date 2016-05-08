@@ -12,11 +12,11 @@
             <div class="item active"> 
                 <div class="carousel-caption"> 
                     <div> 
-                        <h2 class="heading animated bounceInDown">FastQuiz - Test your knowledge speed</h2> 
-                        <p class="animated bounceInUp">Are you fast enough?</p> 
+                        <h2 class="heading animated bounceInDown home-text">FastQuiz - Test your knowledge speed</h2> 
+                        <p class="animated bounceInUp home-text">Are you fast enough?</p> 
                         @if (Auth::guest())
                         <a class="btn btn-social btn-block btn-facebook" href="{{ route('redirect') }}">
-                            <span class="fa fa-facebook"></span> Sign in with Facebook
+                            <span class="fa fa-facebook"></span> Sign in and start playing
                         </a>
                         @else
                         <a class="btn btn-default slider-btn animated fadeIn" href="{{ route('login') }}">

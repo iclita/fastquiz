@@ -59,13 +59,13 @@
                         </li> 
                         <li class="scroll">
                             <a href="#blog">
-                                <i class="fa fa-book" aria-hidden="true"></i>&nbsp;Brain Food
+                                <i class="fa fa-graduation-cap" aria-hidden="true"></i>&nbsp;Brain Food
                             </a>
                         </li>
                         @if (Auth::check())
                         <li class="scroll">
                             <div class="dropdown profile">
-                                <img class="avatar" src="{{ Auth::user()->avatar }}" />
+                                <img class="avatar" src="{{ Auth::user()->getAvatar() }}" />
                                 <a class="logout" id="dLabel" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }}<span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="dLabel">
@@ -77,6 +77,11 @@
                                     <li class="scroll">
                                         <a class="logout" href="{{ route('logout') }}">
                                             <i class="fa fa-question-circle" aria-hidden="true"></i>&nbsp;Questions
+                                        </a>
+                                    </li>
+                                    <li class="scroll">
+                                        <a class="logout" href="{{ route('logout') }}">
+                                            <i class="fa fa-book" aria-hidden="true"></i>&nbsp;Articles
                                         </a>
                                     </li>
                                     <li class="scroll">

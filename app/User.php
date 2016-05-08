@@ -3,9 +3,13 @@
 namespace App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Presenters\UserPresenter;
 
 class User extends Authenticatable
 {
+
+    use UserPresenter;
+    
     /**
      * The table assigned to this model.
      *
@@ -19,7 +23,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'facebook_id', 'avatar'
+        'name', 'email', 'facebook_id'
     ];
 
     /**
@@ -34,7 +38,7 @@ class User extends Authenticatable
     /**
      * Find a user by email if it exists or create a new one if it doesn't.
      *
-     * @param Facebook/Google User type $user
+     * @param Facebook type $user
      * @return App\User
      */
     public static function findOrCreate($user)
@@ -47,17 +51,7 @@ class User extends Authenticatable
                 'name' => $user->getName(),
                 'email' => $user->getEmail(),
                 'facebook_id' => $user->getId(),
-                'avatar' => $user->getAvatar(),
             ]);
     }
 
-    /**
-     * Get the Facebook User profile link.
-     *
-     * @return string
-     */
-    public function getProfile()
-    {
-        return 'https://www.facebook.com/' . $this->facebook_id;
-    }
 }

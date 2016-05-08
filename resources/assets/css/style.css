@@ -299,7 +299,7 @@ h1, h2, h3, h4, h5, h6 {
 	z-index:1;
 	left:0;
 	bottom:0;
-	background-image:url(../images/home-pattern.png);
+	background-image:url(../images/pattern.png);
 	background-repeat:repeat;
 	opacity:0.2;
 }*/
@@ -307,15 +307,18 @@ h1, h2, h3, h4, h5, h6 {
 #home{
   padding: 0;
   overflow: hidden;
-  position:relative
+  position: relative
 }
 
 #main-carousel .carousel-inner .item {
-	background-size:cover;
+	background-size: cover;
 	height: 100%;
 	background-position: 50% 50%;
-	background-repeat:no-repeat;
-	background-image: url('../images/slider/slide3.jpg');
+	background-repeat: no-repeat;
+	background: linear-gradient(
+      rgba(0, 0, 0, 0.6),
+      rgba(0, 0, 0, 0.6)
+    ), url('../images/cover.jpg');
 }
 
 #main-carousel .carousel-indicators { 
@@ -598,27 +601,30 @@ h1, h2, h3, h4, h5, h6 {
 ======================*/
 
 #services {
-  background-image: url("../images/services/service-bg.jpg");
-  color:#fff;
-  text-align:center;
-  background-color:	#0A0A13;
+	background-image: linear-gradient(
+      rgba(0, 0, 0, 0.6),
+      rgba(0, 0, 0, 0.6)
+    ), url("../images/background.jpg");
+ 	color: #fff;
+ 	text-align: center;
+ 	background-color: #0A0A13;
 }
 
 .services {
-	display:block;
-	overflow:hidden;
-	margin-top:50px
+	display: block;
+	overflow: hidden;
+	margin-top: 50px
 }
 
 #services h2{
   color: #fff;
   border-color: #fff;
-  margin-bottom:35px
+  margin-bottom: 35px
 }
 
 .single-service {
 	background-color: rgba(0, 0, 0, 0.39);
-	padding:25px;
+	padding: 25px;
 	transition: all 0.9s ease 0s;
 	-moz-transition: all 0.9s ease 0s;
 	-webkit-transition: all 0.9s ease 0s;
@@ -626,19 +632,19 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .single-service p {
-	text-align:justify;
+	text-align: justify;
 }
 
 .single-service i {
-	text-align:center;
-	font-size:80px;
+	text-align: center;
+	font-size: 80px;
 	background-color: #fff;
 	border-radius: 50%;
 	display: inline-block;
 	height: 150px;
 	line-height: 150px;
 	width: 150px;
-	color:#43484E;
+	color: #43484E;
 	transition: all 0.9s ease 0s;
 	-moz-transition: all 0.9s ease 0s;
 	-webkit-transition: all 0.9s ease 0s;
