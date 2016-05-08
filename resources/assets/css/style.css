@@ -264,7 +264,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #navigation .navbar-nav.navbar-right {
-	margin-top: 20px;
+	margin-top: 25px;
     margin-bottom: 10px;
 }
 
@@ -315,6 +315,7 @@ h1, h2, h3, h4, h5, h6 {
 	height: 100%;
 	background-position: 50% 50%;
 	background-repeat:no-repeat;
+	background-image: url('../images/slider/slide3.jpg');
 }
 
 #main-carousel .carousel-indicators { 
@@ -461,7 +462,7 @@ h1, h2, h3, h4, h5, h6 {
 	position:relative
 }
 
-.title-one:after {
+/*.title-one:after {
 	color: #fc7700;
 	content: "||";
 	position: absolute;
@@ -475,8 +476,7 @@ h1, h2, h3, h4, h5, h6 {
 	left: -40px;
 	position: absolute;
 	top: 0;
-}
-
+}*/
 
 #about-us h4 {
 	color: #909090;

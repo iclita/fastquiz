@@ -11,10 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
-
 Route::get('login', 'HomeController@login')->name('login');
 Route::get('logout', 'HomeController@logout')->name('logout');
 Route::get('redirect', 'HomeController@redirectToProvider')->name('redirect');
