@@ -110,7 +110,7 @@
     </footer>
 
     @if (session()->has('message'))
-    <div class="message-box bg-danger">
+    <div class="message-box bg-info">
         {{ session('message') }}
     </div>
     @endif 
