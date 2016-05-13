@@ -15,7 +15,7 @@
                         <h2 class="heading animated bounceInDown home-text">FastQuiz - Test your knowledge speed</h2> 
                         <p class="animated bounceInUp home-text">Are you fast enough?</p> 
                         @if (Auth::guest())
-                        <a class="btn btn-social btn-block btn-facebook" href="{{ route('redirect') }}">
+                        <a class="btn btn-social btn-block btn-facebook" href="{{ route('register') }}">
                             <span class="fa fa-facebook"></span> Sign in and start playing
                         </a>
                         @else

@@ -13,6 +13,6 @@
 
 Route::get('login', 'HomeController@login')->name('login');
 Route::get('logout', 'HomeController@logout')->name('logout');
-Route::get('redirect', 'HomeController@redirectToProvider')->name('redirect');
+Route::get('register', 'HomeController@redirectToProvider')->name('register');
 Route::get('callback', 'HomeController@handleProviderCallback')->name('callback');
 Route::get('/', 'HomeController@home')->name('home');
