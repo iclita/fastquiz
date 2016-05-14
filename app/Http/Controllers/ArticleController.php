@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Repositories\Privates\ArticleRepository;
-use App\Http\Requests\CreateOrUpdateArticleRequest;
+use App\Http\Requests\ArticleRequest;
 
 class ArticleController extends Controller
 {
@@ -53,7 +53,9 @@ class ArticleController extends Controller
 
     	$articles = $this->repository->all();
 
-    	return view('articles.show', compact('articles', 'id'));
+    	$currentArticle = $this->repository->find($id);
+
+    	return view('articles.show', compact('articles', 'currentArticle'));
     }
 
     /**
@@ -69,10 +71,10 @@ class ArticleController extends Controller
     /**
      * Store a new Article.
      *
-	 * @param CreateOrUpdateArticleRequest $request
+	 * @param ArticleRequest $request
      * @return RedirectResponse
      */
-    public function store(CreateOrUpdateArticleRequest $request)
+    public function store(ArticleRequest $request)
     {
     	$this->repository->create($request);
         
@@ -98,14 +100,31 @@ class ArticleController extends Controller
     /**
      * Update an existing Article.
      *
-	 * @param CreateOrUpdateArticleRequest $request
+	 * @param ArticleRequest $request
      * @return RedirectResponse
      */
-    public function update(CreateOrUpdateArticleRequest $request, $id)
+    public function update(ArticleRequest $request, $id)
     {
     	$this->repository->update($request, $id);
         
         return redirect()->route('articles')->with('success', 'Article succesfully updated');
+    }
+
+    /**
+     * Delete an existing Article.
+     *
+	 * @param Request $request
+     * @return RedirectResponse
+     */
+    public function delete(Request $request)
+    {
+    	$id = (int) $request->input('id');
+
+    	$article = $this->repository->find($id);
+
+    	$article->delete();
+        
+        return redirect()->route('articles')->with('success', 'Article succesfully deleted');
     }
 
 }

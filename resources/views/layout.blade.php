@@ -112,6 +112,8 @@
 
     @yield('footer')
 
+    @yield('modal')
+
     <script type="text/javascript" src="{{ cached_asset('js/app.js') }}"></script> 
 
 </body>

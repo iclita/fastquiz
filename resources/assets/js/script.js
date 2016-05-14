@@ -137,4 +137,14 @@ $(document).ready(function(){
 		$('.item-form').submit();
 	});
 
+	$('.delete-article').off('click').on('click', function(){
+		var id = parseInt($(this).data('id'));
+		$('#article-id').val(id);
+		$('#delete-article-modal').modal('show');
+	});
+
+	$('#delete-article-button').off('click').on('click', function(){
+		$('#delete-article-form').submit();
+	});
+
 });
