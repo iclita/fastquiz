@@ -16,7 +16,7 @@
                         <p class="animated bounceInUp home-text">Are you fast enough?</p> 
                         @if (Auth::guest())
                         <a class="btn btn-social btn-block btn-facebook" href="{{ route('register') }}">
-                            <span class="fa fa-facebook"></span> Sign in and start playing
+                            <span class="fa fa-facebook"></span> Sign in with Facebook
                         </a>
                         @else
                         <a class="btn btn-default slider-btn animated fadeIn" href="{{ route('login') }}">

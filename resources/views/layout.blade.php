@@ -76,12 +76,12 @@
                                     </li>
                                     <li class="scroll">
                                         <a class="logout" href="{{ route('logout') }}">
-                                            <i class="fa fa-question-circle" aria-hidden="true"></i>&nbsp;Questions
+                                            <i class="fa fa-question-circle" aria-hidden="true"></i>&nbsp;My Questions
                                         </a>
                                     </li>
                                     <li class="scroll">
                                         <a class="logout" href="{{ route('logout') }}">
-                                            <i class="fa fa-book" aria-hidden="true"></i>&nbsp;Articles
+                                            <i class="fa fa-book" aria-hidden="true"></i>&nbsp;My Articles
                                         </a>
                                     </li>
                                     <li class="scroll">

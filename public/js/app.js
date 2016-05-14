@@ -470,7 +470,7 @@ jQuery(function($) {'use strict',
 	});
 
 	// $('.navbar-collapse ul li a').click(function() {  
-	// 	$('html, body').animate({scrollTop: $(this.hash).offset().top - 79}, 1000);
+	// 	$('html, body').animate({scrollTop: $(this.hash).offset().top}, 1000);
 	// 	return false;
 	// });
 
