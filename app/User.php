@@ -54,4 +54,14 @@ class User extends Authenticatable
             ]);
     }
 
+    /**
+     * The User can have many Articles.
+     *
+     * @return Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function articles()
+    {
+        return $this->hasMany(Article::class);
+    }
+
 }

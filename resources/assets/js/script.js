@@ -49,10 +49,12 @@ jQuery(function($) {'use strict',
 		Scroll();
 	});
 
-	// $('.navbar-collapse ul li a').click(function() {  
-	// 	$('html, body').animate({scrollTop: $(this.hash).offset().top}, 1000);
-	// 	return false;
-	// });
+	$('.navbar-collapse ul li a').click(function() {
+		if ( ! $(this).hasClass('logout')) {
+			$('html, body').animate({scrollTop: $(this.hash).offset().top}, 1000);
+			return false;
+		}  
+	});
 
 });
 
@@ -127,3 +129,12 @@ if (window.location.hash == '#_=_'){
     }
 
 }
+
+// Custom JS code
+$(document).ready(function(){
+
+	$('.item-save').off('click').on('click', function(){
+		$('.item-form').submit();
+	});
+
+});

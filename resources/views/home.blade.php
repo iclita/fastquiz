@@ -238,3 +238,13 @@
 </section>
 
 @stop
+
+@section('footer')
+<footer id="footer"> 
+    <div class="container"> 
+        <div class="text-center"> 
+            <p>{{ date('Y') }} &copy; FastQuiz.net | All Rights Reserved</p> 
+        </div> 
+    </div> 
+</footer>
+@stop

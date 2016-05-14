@@ -79,3 +79,11 @@ if ( ! function_exists('cached_asset'))
         return asset($path);
     }
 }
+
+if ( ! function_exists('categories'))
+{
+    function categories()
+    {
+        return \DB::table('categories')->pluck('name', 'id');
+    }
+}

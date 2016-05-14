@@ -28,7 +28,7 @@ class HomeController extends Controller
      */
     public function login()
     {
-        return redirect('/')->with('message', 'You must sign in first');
+        return redirect('/')->with('error', 'You must sign in first');
     }
 
     /**
@@ -42,6 +42,7 @@ class HomeController extends Controller
         
         return redirect('/');
     }
+
 	/**
      * Redirect the user to the OAuth authentication page.
      *

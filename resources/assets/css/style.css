@@ -37,12 +37,23 @@
 /*====================
 ======Typography=====
 ======================*/
+html {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
 body {
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Roboto', Helvetica, Arial, sans-serif; 
 	position: relative;
 	font-weight:400;
 	background: #fff;
-	color:#43484E
+	color:#43484E;
+	margin: 0;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	width: 100% !important;
+	height: auto;
+	overflow-x: hidden !important;
 }
 
 body  section{
@@ -51,11 +62,11 @@ body  section{
 
 a:hover {
 	outline: none;
-	text-decoration:none;
+	text-decoration: none;
 }
 
 a:focus {
-	outline:none;
+	outline: none;
 	outline-offset: 0;
 }
 
@@ -64,7 +75,7 @@ a {
 	-moz-transition: 300ms;
 	-o-transition: 300ms;
 	transition: 300ms;
-	color:#fc7700;
+	color: #fc7700;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -72,7 +83,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .slider-btn {
-	background-color:#fc7700;
+	background-color: #fc7700;
 	color: #FFF;
 	-webkit-box-shadow: inset 0 0 0 2px #fc7700;
 	box-shadow: inset 0 0 0 2px #fc7700;
@@ -83,7 +94,7 @@ h1, h2, h3, h4, h5, h6 {
 	line-height:55px;
 	padding: 0;
 	font-size: 18px;
-	font-weight:800;
+	font-weight: 800;
 	border: 0;
 	-webkit-transition: all 0.3s ease 0s;
 	-moz-transition: all 0.3s ease 0s;
@@ -1313,12 +1324,12 @@ h1, h2, h3, h4, h5, h6 {
 ======================*/
 
 #footer {
-	background-color:#f6f6f6;
-	padding:25px 0;
-	color:#43484E;
-	font-size:16px;
-	position:relative;
-	margin-top:1px;
+	background-color: #ddd;
+	padding: 25px 0;
+	color: #43484E;
+	font-size: 16px;
+	position: relative;
+	margin-top: 1px;
 }
 
 #footer p {
@@ -1326,7 +1337,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #footer a {
-	color:#fc7700;
+	color: #fc7700;
 }
 
 
@@ -1582,3 +1593,31 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: bold;
     font-size: 16px;
 }
+
+.panel-title {	
+	margin-top: 10px;
+}
+
+.panel-footer {
+	text-align: center;
+}
+
+.input-error {
+	margin: 0;
+    color: #ff3838;
+}
+
+.list-group .active {
+	background-color: #fc7700;
+    border-color: #fc7700;
+    cursor: default;
+}
+
+.list-group .active:hover {
+	background-color: #fc7700;
+    border-color: #fc7700;
+}
+
+.list-group .active p {
+	color: #fff !important;
+}      

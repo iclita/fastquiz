@@ -16,6 +16,7 @@ elixir(function(mix) {
     mix.styles([
     	'bootstrap.css',
         'bootstrap-social.css',
+        'bootcards.css',
     	'font-awesome.css',
     	'animate.css',
     	'jquery.sidr.dark.css',
@@ -28,6 +29,7 @@ elixir(function(mix) {
     mix.scripts([
     	'jquery.min.js',
     	'bootstrap.min.js',
+        'bootcards.min.js',
     	'html5shiv.js',
     	'jquery.isotope.min.js',
     	'jquery.parallax.js',
