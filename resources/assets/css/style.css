@@ -1605,6 +1605,7 @@ h1, h2, h3, h4, h5, h6 {
 .input-error {
 	margin: 0;
     color: #ff3838;
+    font-size: 14px !important;
 }
 
 .list-group .active {
@@ -1628,4 +1629,14 @@ h1, h2, h3, h4, h5, h6 {
 
 .modal-body p {
 	font-size: 16px;
+}
+
+.bg-success {
+	color: #fff;
+	background-color: #449d44;
+}
+
+.bg-danger {
+	color: #fff;
+	background-color: #c9302c;
 }      

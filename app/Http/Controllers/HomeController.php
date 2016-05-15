@@ -28,7 +28,7 @@ class HomeController extends Controller
      */
     public function login()
     {
-        return redirect('/')->with('error', 'You must sign in first');
+        return redirect('/')->with('error', 'You must log in first');
     }
 
     /**
