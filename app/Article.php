@@ -27,6 +27,13 @@ class Article extends Model
     ];
 
 	/**
+     * The number of articles per page on the private area.
+     *
+     * @constant ITEMS_PER_PAGE int
+     */
+    const ITEMS_PER_PAGE = 5;
+
+	/**
 	 * The Article can belong to only one Category.
 	 *
 	 * @return Illuminate\Database\Eloquent\Relations\BelongsTo

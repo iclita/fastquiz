@@ -43,7 +43,7 @@ class ArticleRepository {
 		$this->checkUser();
 
 		// Get all the Articles belonging to the current User
-		$articles = Auth::user()->articles()->orderByRaw('updated_at desc, created_at desc')->get();
+		$articles = Auth::user()->articles()->orderByRaw('updated_at desc, created_at desc')->paginate(Article::ITEMS_PER_PAGE);
 		// Eager load all the relations
 		$articles->load('category', 'user');
 

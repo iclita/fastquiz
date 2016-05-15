@@ -9,7 +9,7 @@
 <div class="container">
     <h2>My Articles</h2>
     <div class="row">
-        <div class="col-md-6 col-md-offset-3 first-item-panel">
+        <div class="col-md-8 col-md-offset-2 first-item-panel">
             <div class="panel panel-default">
               <div class="panel-heading clearfix">
                 <h3 class="panel-title pull-left">Add New Article</h3>

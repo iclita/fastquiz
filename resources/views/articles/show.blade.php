@@ -6,27 +6,32 @@
 
 @section('content')
 
-<div class="container">
+<div class="container profile-container">
     <h2>My Articles</h2>
+    <a class="btn btn-primary btn-block add-item" href="{{ route('create-article') }}">
+      <i class="fa fa-plus"></i>
+      Add
+    </a>
     <div class="row">
-        <div class="col-sm-5 bootcards-list">
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 bootcards-list">
 
           <div class="panel panel-default">
 
             <div class="panel-body">
-              <form>
+              <form class="form-inline">
                 <div class="row">
-                  <div class="col-xs-9">
+                  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    
                     <div class="form-group">
-                      <input type="text" class="form-control" placeholder="Search Articles...">
+                      <input type="text" class="form-control" placeholder="What are you looking for?">
                       <i class="fa fa-search"></i>
                     </div>
-                  </div>
-                  <div class="col-xs-3">
-                    <a class="btn btn-primary btn-block" href="{{ route('create-article') }}">
-                      <i class="fa fa-plus"></i>
-                      Add
-                    </a>
+                    <div class="form-group">
+                      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                      {!! Form::select('category', categories(), null, ['class'=>'form-control', 'required', 'placeholder' => 'All categories']) !!}
+                      </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Search</button>
                   </div>
                 </div>
               </form>
@@ -49,7 +54,7 @@
           </div>
 
         </div>
-        <div class="col-sm-7 bootcards-cards">
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 bootcards-cards">
 
         <div class="panel panel-default">
           <div class="panel-heading clearfix">
@@ -81,6 +86,11 @@
         </div>
 
         </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 pagination-container">
+        {!! $articles->links() !!}
+      </div>
     </div>
 </div>
 

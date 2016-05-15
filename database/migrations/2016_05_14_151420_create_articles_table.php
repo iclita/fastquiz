@@ -22,6 +22,8 @@ class CreateArticlesTable extends Migration
             $table->text('content'); 
             $table->timestamps();
         });
+
+        \DB::statement('ALTER TABLE articles ADD FULLTEXT search(title, content)');
     }
 
     /**

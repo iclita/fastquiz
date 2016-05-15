@@ -13462,6 +13462,7 @@ body {
 	width: 100% !important;
 	height: auto;
 	overflow-x: hidden !important;
+	padding: 0 !important;
 }
 
 body  section{
@@ -14477,28 +14478,30 @@ h1, h2, h3, h4, h5, h6 {
 
 .single-blog {
 	margin-bottom: 30px;
-	background-color:#F7F7F7;
-	padding:25px;
-	transition: all 1s ease 0s;
+	background-color: #F7F7F7;
+	padding: 25px;
+/*	transition: all 1s ease 0s;
 	-moz-transition: all 1s ease 0s;
 	-webkit-transition: all 1s ease 0s;
 	-o-transition: all 1s ease 0s;
-	-webkit-box-shadow: 0 2px 0 0 #ddd;
-	box-shadow: 0 2px 0 0 #ddd;
+	-webkit-box-shadow: 0 5px 0 0 #F7F7F7;
+	box-shadow: 0 5px 0 0 #F7F7F7;*/
 }
 
 .single-blog:hover {
-	background-color:#333;
-	color:#fff
+	/*background-color: #333;*/
+	/*color: #fff;*/
+	box-shadow: 10px 10px 10px hsla(0,0%,82%,.75);
+	-webkit-box-shadow: 10px 10px 10px hsla(0,0%,82%,.75);
 }
 
-.single-blog:hover.single-blog h2 {
-	color:#fff
-}
+/*.single-blog:hover.single-blog h2 {
+	color: #fff;
+}*/
 
 .single-blog:hover.single-blog .btn-primary {
-	background-color:#fc7700;
-	color:#fff;
+	background-color: #fc7700;
+	color: #fff;
 	border-color:#fff;
 	transition: all 0.9s ease 0s;
 	-moz-transition: all 0.9s ease 0s;
@@ -15056,5 +15059,25 @@ h1, h2, h3, h4, h5, h6 {
 
 select.form-control {
 	padding-left: 8px;
-}      
+}
+
+.add-item {
+	float: right;
+	max-width: 100px;
+	margin-top: -45px;
+}
+
+.profile-container {
+	padding-top: 80px;
+}
+
+.pagination-container {
+	text-align: center;
+}
+
+.pagination-container .pagination .active span {
+	background-color: #fc7700 !important;
+	border-color: #fc7700 !important;
+}
+
 /*# sourceMappingURL=app.css.map */
