@@ -1663,6 +1663,14 @@ select.form-control {
 	padding-top: 80px;
 }
 
+.profile-container h2 a {
+	color: #333;
+}
+
+.profile-container h2 a:hover {
+	color: #fc7700;
+}
+
 .pagination-container {
 	text-align: center;
 }

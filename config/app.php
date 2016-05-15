@@ -149,6 +149,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+        Sofa\Eloquence\ServiceProvider::class,
 
         /*
          * Application Service Providers...

@@ -7,7 +7,7 @@
 @section('content')
 
 <div class="container profile-container">
-    <h2>My Articles</h2>
+    <h2><a href="{{ route('articles') }}">My Articles</a></h2>
     <a class="btn btn-primary btn-block add-item" href="{{ route('create-article') }}">
       <i class="fa fa-plus"></i>
       Add

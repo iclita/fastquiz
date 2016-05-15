@@ -4,11 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Services\HasCategory;
+use Sofa\Eloquence\Eloquence;
 
 class Article extends Model
 {
 
-	use HasCategory;
+	use HasCategory, Eloquence;
 	
 	/**
 	 * The database table used by the model.

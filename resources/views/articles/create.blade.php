@@ -6,8 +6,8 @@
 
 @section('content')
 
-<div class="container">
-    <h2>My Articles</h2>
+<div class="container profile-container">
+    <h2><a href="{{ route('articles') }}">My Articles</a></h2>
     <div class="row">
         <div class="col-md-8 col-md-offset-2 first-item-panel">
             <div class="panel panel-default">
