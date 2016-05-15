@@ -1619,6 +1619,11 @@ h1, h2, h3, h4, h5, h6 {
     border-color: #fc7700;
 }
 
+.list-group .active:focus {
+	background-color: #fc7700;
+    border-color: #fc7700;
+}
+
 .list-group .active p {
 	color: #fff !important;
 }
@@ -1639,4 +1644,8 @@ h1, h2, h3, h4, h5, h6 {
 .bg-danger {
 	color: #fff;
 	background-color: #c9302c;
+}
+
+select.form-control {
+	padding-left: 8px;
 }      
