@@ -19,17 +19,18 @@
           <div class="panel panel-default">
 
             <div class="panel-body">
-              <form class="form-inline">
+              <form class="form-inline" method="GET" action="{{ route('articles') }}">
+                <input type="hidden" name="search" value="true" />
                 <div class="row">
                   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     
                     <div class="form-group">
-                      <input type="text" class="form-control" placeholder="What are you looking for?">
+                      <input type="text" class="form-control" name="keywords" value="{{ Request::input('keywords', '') }}" placeholder="What are you looking for?">
                       <i class="fa fa-search"></i>
                     </div>
                     <div class="form-group">
                       <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                      {!! Form::select('category', categories(), null, ['class'=>'form-control', 'required', 'placeholder' => 'All categories']) !!}
+                      {!! Form::select('category', categories(), Request::input('category', ''), ['class'=>'form-control', 'placeholder' => 'All categories']) !!}
                       </div>
                     </div>
                     <button type="submit" class="btn btn-primary">Search</button>
@@ -42,12 +43,16 @@
               @foreach ($articles as $index=>$article)
                   {{-- Make the first item active --}}
                   @if ($index === 0)
-                  <a class="list-group-item active" href="javascript:void(0);">
+                  <a class="list-group-item active show-article" 
+                    data-title="{{ $article->title }}" data-category="{{ $article->getCategoryName() }}" data-content="{{ $article->content }}"
+                  href="javascript:void(0);">
                   @else
-                  <a class="list-group-item" href="{{ route('show-article', ['id' => $article->id]) }}">
+                  <a class="list-group-item show-article" 
+                  data-title="{{ $article->title }}" data-category="{{ $article->getCategoryName() }}" data-content="{{ $article->content }}"
+                  href="javascript:void(0);">
                   @endif
                     <img src="{{ $article->getCategoryIcon() }}" class="img-rounded pull-left"/>
-                    <h4 class="list-group-item-heading">{{ $article->title }}</h4>
+                    <h4 class="list-group-item-heading">{{ short($article->title) }}</h4>
                     <p class="list-group-item-text">Category: {{ $article->getCategoryName() }}</p>
                   </a>
               @endforeach
@@ -72,14 +77,14 @@
             <div class="list-group">
               <div class="list-group-item">
                 <p class="list-group-item-text">Title</p>
-                <h4 class="list-group-item-heading">{{ $articles[0]->title }}</h4>
+                <h4 class="list-group-item-heading show-article-title">{{ $articles[0]->title }}</h4>
               </div>
               <div class="list-group-item">
                 <p class="list-group-item-text">Category</p>
-                <h4 class="list-group-item-heading">{{ $articles[0]->getCategoryName() }}</h4>
+                <h4 class="list-group-item-heading show-article-category">{{ $articles[0]->getCategoryName() }}</h4>
               </div>
               <div class="list-group-item">
-                <p class="list-group-item-text">{{ $articles[0]->content }}</p>
+                <p class="list-group-item-text show-article-content">{{ $articles[0]->content }}</p>
               </div>
             </div>
           <div class="panel-footer">
@@ -142,7 +147,7 @@
     </div>
     <div class="row">
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 pagination-container">
-        {!! $articles->links() !!}
+        {!! $articles->appends($query)->links() !!}
       </div>
     </div>
 </div>

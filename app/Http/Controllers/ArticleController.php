@@ -31,31 +31,16 @@ class ArticleController extends Controller
     /**
      * Fetch all the Articles and show them to the authenticated User.
      *
+     * @param Request $request
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-    	$articles = $this->repository->all();
+    	$query = getSearchParams($request);
+
+    	$articles = $this->repository->all($query);
         
-        return view('articles.index', compact('articles'));
-    }
-
-    /**
-     * Show the current Article.
-     *
-	 * @param Request $request
-	 * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Request $request, $id)
-    {
-    	$id = (int) $id;
-
-    	$articles = $this->repository->all();
-
-    	$currentArticle = $this->repository->find($id);
-
-    	return view('articles.show', compact('articles', 'currentArticle'));
+        return view('articles.index', compact('articles', 'query'));
     }
 
     /**

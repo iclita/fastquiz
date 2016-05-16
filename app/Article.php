@@ -27,12 +27,20 @@ class Article extends Model
         'title', 'content', 'category_id'
     ];
 
+    /**
+     * The colums that are searchable.
+     * No need for this, but you can define default searchable columns.
+     *
+     * @var array
+     */
+   protected $searchableColumns = ['title', 'content'];
+
 	/**
      * The number of articles per page on the private area.
      *
      * @constant ITEMS_PER_PAGE int
      */
-    const ITEMS_PER_PAGE = 5;
+    const ITEMS_PER_PAGE = 2;
 
 	/**
 	 * The Article can belong to only one Category.

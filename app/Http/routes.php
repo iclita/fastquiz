@@ -19,11 +19,9 @@ Route::get('callback', 'HomeController@handleProviderCallback')->name('callback'
 Route::get('/', 'HomeController@home')->name('home');
 
 // Articles management
-Route::get('article/{id}/show', 'ArticleController@show')->name('show-article');
 Route::get('article/create', 'ArticleController@create')->name('create-article');
 Route::post('article/store', 'ArticleController@store')->name('store-article');
 Route::get('article/{id}/edit', 'ArticleController@edit')->name('edit-article');
 Route::post('article/{id}/update', 'ArticleController@update')->name('update-article');
 Route::post('article/delete', 'ArticleController@delete')->name('delete-article');
-Route::get('articles/search', 'ArticleController@search')->name('search-articles');
 Route::get('articles', 'ArticleController@index')->name('articles');

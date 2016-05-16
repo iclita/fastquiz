@@ -34,18 +34,35 @@ class ArticleRepository {
 	/**
 	 * Get the all the Article's associated with the authenticated user.
 	 *
+	 * @param array $query // array with query string search params
 	 * @return Illuminate\Database\Eloquent\Collection
 	 */
-	public function all()
+	public function all(array $query)
 	{
 		// This is superfluous because of the middleware.
 		// But another security check does no harm. :)
 		$this->checkUser();
 
-		// Get all the Articles belonging to the current User
-		$articles = Auth::user()->articles()->orderByRaw('updated_at desc, created_at desc')->paginate(Article::ITEMS_PER_PAGE);
-		// Eager load all the relations
-		$articles->load('category', 'user');
+		if (count($query) === 0) {		
+			// Get all the Articles belonging to the current User
+			$articles = Auth::user()->articles()
+									->orderByRaw('updated_at desc, created_at desc')
+									->paginate(Article::ITEMS_PER_PAGE);
+			// Eager load all the relations
+			$articles->load('category', 'user');
+		}else{
+			// If the user did not select a specific category it means we must search through all categories
+			if (empty($query['category'])) {
+				$articles = Article::search($query['keywords'])->where('user_id', Auth::id())
+															   ->orderByRaw('updated_at desc, created_at desc')
+															   ->paginate(Article::ITEMS_PER_PAGE);
+			}else{
+				$articles = Article::search($query['keywords'])->where('user_id', Auth::id())
+															   ->where('category_id', $query['category'])
+															   ->orderByRaw('updated_at desc, created_at desc')
+															   ->paginate(Article::ITEMS_PER_PAGE);				
+			}
+		}
 
 		return $articles;
 	}

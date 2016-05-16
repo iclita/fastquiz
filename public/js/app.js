@@ -569,6 +569,16 @@ $(document).ready(function(){
 		$('#delete-article-form').submit();
 	});
 
+	$('.show-article').off('click').on('click', function(){
+
+		$('.show-article').removeClass('active');
+		$(this).addClass('active');
+		$('.show-article-title').html($(this).data('title'));
+		$('.show-article-category').html($(this).data('category'));
+		$('.show-article-content').html($(this).data('content'));
+
+	});
+
 });
 
 //# sourceMappingURL=app.js.map

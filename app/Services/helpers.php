@@ -82,8 +82,32 @@ if ( ! function_exists('cached_asset'))
 
 if ( ! function_exists('categories'))
 {
+	/**
+	 * Get all the categories in the application.
+	 *
+	 * @return array
+	 */
     function categories()
     {
-        return \DB::table('categories')->pluck('name', 'id');
+        return \DB::table('categories')->orderBy('name', 'asc')->pluck('name', 'id');
+    }
+}
+
+if ( ! function_exists('getSearchParams'))
+{
+	/**
+	 * Get the search query as an array of parameters to be appended to the url.
+	 *
+	 * @param Illuminate\Http\Request $request
+	 * @return array
+	 */
+    function getSearchParams(\Illuminate\Http\Request $request)
+    {
+    	// If we don't have a search input it means we have nothing to append to the query string
+        if ( ! $request->input('search')) {
+        	return [];
+        }
+
+        return ['search' => 'true', 'keywords' => $request->input('keywords'), 'category' => $request->input('category')];
     }
 }
