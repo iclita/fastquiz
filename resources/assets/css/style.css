@@ -1679,3 +1679,11 @@ select.form-control {
 	background-color: #fc7700 !important;
 	border-color: #fc7700 !important;
 }
+
+.no-results h2 {
+	text-align: center;
+}
+
+.no-results a {
+	text-decoration: underline;
+}

@@ -40,7 +40,7 @@ class Article extends Model
      *
      * @constant ITEMS_PER_PAGE int
      */
-    const ITEMS_PER_PAGE = 2;
+    const ITEMS_PER_PAGE = 5;
 
 	/**
 	 * The Article can belong to only one Category.
