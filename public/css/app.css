@@ -13488,7 +13488,7 @@ a {
 }
 
 h1, h2, h3, h4, h5, h6 {
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Roboto', Helvetica, Arial, sans-serif; 
 }
 
 .slider-btn {
@@ -13690,7 +13690,7 @@ h1, h2, h3, h4, h5, h6 {
 
 #navigation .navbar-nav.navbar-right li a {
 	color: #43484E;
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Roboto', Helvetica, Arial, sans-serif; 
 	font-size: 14px;
 	padding: 0;
 	text-transform: uppercase;
@@ -13782,7 +13782,7 @@ h1, h2, h3, h4, h5, h6 {
 #main-carousel .carousel-inner h2 {
 	color: #f6f6f6;
 	display: inline-block;
-	font-family: roboto;
+	font-family: 'Roboto', Helvetica, Arial, sans-serif; 
 	font-size: 55px;
 	font-weight: 800;
 	margin-bottom: 40px;
@@ -13796,7 +13796,7 @@ h1, h2, h3, h4, h5, h6 {
 
 #main-carousel .carousel-inner p {
 	color: #f6f6f6;
-	font-family: roboto;
+	font-family: 'Roboto', Helvetica, Arial, sans-serif; 
 	font-size: 30px;
 	font-weight: 300;
 	margin-bottom: 59px;
@@ -14325,7 +14325,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .mask h3 {
 	color: #43484E;
-	font-family: cabin;
+	font-family: 'Roboto', Helvetica, Arial, sans-serif; 
 	font-size: 22px;
 	font-weight: 700;
 	margin-top: 30px;
@@ -14335,7 +14335,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .mask h4 {
 	color:#000;
-	font-family: roboto;
+	font-family: 'Roboto', Helvetica, Arial, sans-serif; 
 	font-size: 14px;
 	font-weight: 200;
 	padding: 0 35px 5px;
@@ -14439,7 +14439,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .clients h2 {
 	color: #FFFFFF;
-	font-family: 'Roboto',sans-serif;
+	font-family: 'Roboto', Helvetica, Arial, sans-serif; 
 	font-size: 30px;
 	font-weight: 500;
 	line-height: 40px;
@@ -14449,7 +14449,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .clients p {
 	color: #FFFFFF;
-	font-family: 'Roboto',sans-serif;
+	font-family: 'Roboto', Helvetica, Arial, sans-serif; 
 	font-size: 14px;
 	font-weight: 300;
 	letter-spacing: 3px;
@@ -14467,8 +14467,9 @@ h1, h2, h3, h4, h5, h6 {
 ======================*/
 
 #blog {
-	padding-bottom:75px;
-	padding-top:75px
+	padding-bottom: 75px;
+	padding-top: 75px;
+	background-color: #eee;
 }
 
 .blog-heading {
@@ -14478,7 +14479,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .single-blog {
 	margin-bottom: 30px;
-	background-color: #F7F7F7;
+	background-color: #fff;
 	padding: 25px;
 /*	transition: all 1s ease 0s;
 	-moz-transition: all 1s ease 0s;
@@ -14964,10 +14965,15 @@ h1, h2, h3, h4, h5, h6 {
 	font-size: 18px;
 	max-width: 260px;
 	min-width: 250px;
+	text-align: center;
 }
 
 .btn-facebook .fa-facebook {
-	padding-top: 3px;
+	padding-top: 4px;
+}
+
+.fb-text {
+	font-size: 20px;
 }
 
 .profile {
