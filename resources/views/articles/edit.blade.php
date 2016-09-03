@@ -50,7 +50,10 @@
                       {!! Form::textarea('content', null, ['class'=>'form-control', 'rows'=>'10', 'required', 'minlength'=>'100', 'maxlength'=>'1500', 'placeholder'=>'Content (min. 100 characters and max. 1500 characters)']) !!}
                     </div>
                   </div>
-                  {!! Form::close() !!}
+
+                  {!! app('captcha')->display(); !!}
+
+                {!! Form::close() !!}
               </div>
               <div class="panel-footer">
                 <small>FastQuiz - Test your knowledge speed</small>

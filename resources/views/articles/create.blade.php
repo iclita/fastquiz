@@ -51,6 +51,9 @@
                       <textarea name="content" class="form-control" rows="10" required minlength="100" maxlength="1500" placeholder="Content (min. 100 characters and max. 1500 characters)">{{ old('content') }}</textarea>
                     </div>
                   </div>
+
+                  {!! app('captcha')->display(); !!}
+
                 </form>
               </div>
               <div class="panel-footer">

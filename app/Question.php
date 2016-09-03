@@ -6,23 +6,23 @@ use Illuminate\Database\Eloquent\Model;
 use App\Services\HasCategory;
 use Sofa\Eloquence\Eloquence;
 
-class Article extends Model
+class Question extends Model
 {
-	use HasCategory, Eloquence;
+    use HasCategory, Eloquence;
 	
 	/**
 	 * The database table used by the model.
 	 *
 	 * @var string
 	 */
-	protected $table = 'articles';
+	protected $table = 'questions';
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = ['title', 'content', 'category_id'];
+    protected $fillable = ['description', 'choice_a', 'choice_b', 'choice_c', 'choice_d', 'category_id'];
 
     /**
      * The colums that are searchable.
@@ -30,17 +30,17 @@ class Article extends Model
      *
      * @var array
      */
-   protected $searchableColumns = ['title', 'content'];
+   protected $searchableColumns = ['description', 'choice_a', 'choice_b', 'choice_c', 'choice_d'];
 
 	/**
-     * The number of articles per page on the private area.
+     * The number of questions per page on the private area.
      *
      * @constant ITEMS_PER_PAGE int
      */
     const ITEMS_PER_PAGE = 10;
 
 	/**
-	 * The Article can belong to only one Category.
+	 * The Question can belong to only one Category.
 	 *
 	 * @return Illuminate\Database\Eloquent\Relations\BelongsTo
 	 */
@@ -50,7 +50,7 @@ class Article extends Model
 	}
 
 	/**
-	 * The Article can belong to only one User.
+	 * The Question can belong to only one User.
 	 *
 	 * @return Illuminate\Database\Eloquent\Relations\BelongsTo
 	 */

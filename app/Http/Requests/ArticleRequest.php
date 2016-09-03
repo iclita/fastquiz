@@ -28,6 +28,7 @@ class ArticleRequest extends Request
             'title' => 'required|max:50',
             'category' => 'required|exists:categories,id',
             'content' => 'required|min:100|max:1500',
+            // 'g-recaptcha-response' => 'required|captcha',
         ];
     }
 }

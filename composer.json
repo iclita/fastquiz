@@ -9,7 +9,8 @@
         "laravel/framework": "5.2.*",
         "laravel/socialite": "^2.0",
         "laravelcollective/html": "^5.2",
-        "sofa/eloquence": "~5.2@dev"
+        "sofa/eloquence": "~5.2@dev",
+        "anhskohbo/no-captcha": "^2.1"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

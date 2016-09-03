@@ -29,4 +29,14 @@ class Category extends Model
 	{
 		return $this->hasMany(Article::class);
 	}
+
+   	/**
+	 * The Category can have many Questions.
+	 *
+	 * @return Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function questions()
+	{
+		return $this->hasMany(Question::class);
+	}
 }

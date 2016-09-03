@@ -7,7 +7,6 @@ use App\Presenters\UserPresenter;
 
 class User extends Authenticatable
 {
-
     use UserPresenter;
     
     /**
@@ -22,18 +21,14 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = [
-        'name', 'email', 'facebook_id'
-    ];
+    protected $fillable = ['name', 'facebook_id'];
 
     /**
      * The attributes that should be hidden for arrays.
      *
      * @var array
      */
-    protected $hidden = [
-        'remember_token'
-    ];
+    protected $hidden = ['remember_token'];
 
     /**
      * Find a user by email if it exists or create a new one if it doesn't.
@@ -49,7 +44,6 @@ class User extends Authenticatable
 
         return static::create([
                 'name' => $user->getName(),
-                'email' => $user->getEmail(),
                 'facebook_id' => $user->getId(),
             ]);
     }
@@ -62,6 +56,16 @@ class User extends Authenticatable
     public function articles()
     {
         return $this->hasMany(Article::class);
+    }
+
+    /**
+     * The User can have many Questions.
+     *
+     * @return Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function questions()
+    {
+        return $this->hasMany(Question::class);
     }
 
 }
