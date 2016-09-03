@@ -3,12 +3,9 @@
 namespace App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use App\Presenters\UserPresenter;
 
 class User extends Authenticatable
-{
-    use UserPresenter;
-    
+{   
     /**
      * The table assigned to this model.
      *
@@ -46,6 +43,26 @@ class User extends Authenticatable
                 'name' => $user->getName(),
                 'facebook_id' => $user->getId(),
             ]);
+    }
+
+    /**
+     * Get the Facebook User profile link.
+     *
+     * @return string
+     */
+    public function getProfile()
+    {
+        return 'https://www.facebook.com/' . $this->facebook_id;
+    }
+
+    /**
+     * Get the Facebook User avatar link.
+     *
+     * @return string
+     */
+    public function getAvatar()
+    {
+        return 'https://graph.facebook.com/v2.7/' . $this->facebook_id . '/picture?type=large';
     }
 
     /**

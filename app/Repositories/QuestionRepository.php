@@ -1,21 +1,20 @@
 <?php 
 
-namespace App\Repositories\Privates;
+namespace App\Repositories;
 
 use Auth;
-use DB;
-use App\Article;
+use App\Question;
 use Illuminate\Http\Request;
 
-class ArticleRepository {
+class QuestionRepository {
 
 	/*
 	|--------------------------------------------------------------------------
-	| Article Repository
+	| Question Repository
 	|--------------------------------------------------------------------------
 	|
 	| This repository is available only for every User.
-	| Each User has access ONLY to his Article repository.
+	| Each User has access ONLY to his Question repository.
 	|
 	*/
 
@@ -32,7 +31,7 @@ class ArticleRepository {
 	}
 
 	/**
-	 * Get the all the Article's associated with the authenticated user.
+	 * Get the all the Question's associated with the authenticated user.
 	 *
 	 * @param array $query // array with query string search params
 	 * @return Illuminate\Database\Eloquent\Collection
@@ -44,35 +43,35 @@ class ArticleRepository {
 		$this->checkUser();
 
 		if (count($query) === 0) {		
-			// Get all the Articles belonging to the current User
-			$articles = Auth::user()->articles()
-									->orderByRaw('updated_at desc, created_at desc')
-									->paginate(Article::ITEMS_PER_PAGE);
+			// Get all the Questions belonging to the current User
+			$questions = Auth::user()->questions()
+									 ->orderByRaw('updated_at desc, created_at desc')
+									 ->paginate(Question::ITEMS_PER_PAGE);
 			// Eager load all the relations
-			$articles->load('category', 'user');
+			$questions->load('category', 'user');
 		}else{
 			// If the user did not select a specific category it means we must search through all categories
 			if (empty($query['category'])) {
-				$articles = Article::search($query['keywords'])->where('user_id', Auth::id())
-															   ->orderByRaw('updated_at desc, created_at desc')
-															   ->paginate(Article::ITEMS_PER_PAGE);
+				$questions = Question::search($query['keywords'])->where('user_id', Auth::id())
+															      ->orderByRaw('updated_at desc, created_at desc')
+															      ->paginate(Question::ITEMS_PER_PAGE);
 			}else{
-				$articles = Article::search($query['keywords'])->where('user_id', Auth::id())
-															   ->where('category_id', $query['category'])
-															   ->orderByRaw('updated_at desc, created_at desc')
-															   ->paginate(Article::ITEMS_PER_PAGE);				
+				$questions = Question::search($query['keywords'])->where('user_id', Auth::id())
+															     ->where('category_id', $query['category'])
+															     ->orderByRaw('updated_at desc, created_at desc')
+															     ->paginate(Question::ITEMS_PER_PAGE);				
 			}
 		}
 
-		return $articles;
+		return $questions;
 	}
 
 	/**
-	 * Get the Article model with the given id.
-	 * Practically get the Article with the given id.
+	 * Get the Question model with the given id.
+	 * Practically get the Question with the given id.
 	 *
 	 * @param int $id
-	 * @return App\Article
+	 * @return App\Question
 	 */
 	public function find($id)
 	{
@@ -80,16 +79,16 @@ class ArticleRepository {
 		// But another security check does no harm. :)
 		$this->checkUser();
 		
-		// Get the Article belonging to the current User with a given $id
-		$article = Auth::user()->articles()->findOrFail($id);
+		// Get the Question belonging to the current User with a given $id
+		$question = Auth::user()->questions()->findOrFail($id);
 		// Eager load all the relations
-		$article->load('category', 'user');
+		$question->load('category', 'user');
 
-		return $article;
+		return $question;
 	}
 
 	/**
-	 * Save a new Article to User's repository.
+	 * Save a new Question to User's repository.
 	 *
 	 * @param Request $request
 	 * @return void
@@ -105,15 +104,15 @@ class ArticleRepository {
 		// This is done because we need to insert category_id into the DB but keep category in the form for proper validation messages
 		$data['category_id'] = (int) $request->input('category');
 
-		$article = new Article($data);
+		$question = new Question($data);
 
 		$author = Auth::user();
 
-		$author->articles()->save($article);
+		$author->questions()->save($question);
 	}
 
 	/**
-	 * Update an existing Article from the User's repository.
+	 * Update an existing Question from the User's repository.
 	 *
 	 * @param Request $request
 	 * @param int $id
@@ -132,9 +131,9 @@ class ArticleRepository {
 
 		$id = (int) $id;
 
-		$article = $this->find($id);
+		$question = $this->find($id);
 
-		$article->update($data);
+		$question->update($data);
 	}
 
 }

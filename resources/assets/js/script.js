@@ -137,9 +137,8 @@ $(document).ready(function(){
 		$('.item-form').submit();
 	});
 
+	// Articles
 	$('.delete-article').off('click').on('click', function(){
-		var id = parseInt($(this).data('id'));
-		$('#article-id').val(id);
 		$('#delete-article-modal').modal('show');
 	});
 
@@ -148,13 +147,34 @@ $(document).ready(function(){
 	});
 
 	$('.show-article').off('click').on('click', function(){
-
 		$('.show-article').removeClass('active');
 		$(this).addClass('active');
 		$('.show-article-title').html($(this).data('title'));
 		$('.show-article-category').html($(this).data('category'));
 		$('.show-article-content').html($(this).data('content'));
+		var editLink = '/articles/' + $(this).data('id') + '/edit';
+		$('.edit-article').attr('href', editLink);
+		$('#article-id').val($(this).data('id'));
+	});
 
+	// Questions
+	$('.delete-question').off('click').on('click', function(){
+		$('#delete-question-modal').modal('show');
+	});
+
+	$('#delete-question-button').off('click').on('click', function(){
+		$('#delete-question-form').submit();
+	});
+
+	$('.show-question').off('click').on('click', function(){
+		$('.show-question').removeClass('active');
+		$(this).addClass('active');
+		$('.show-question-description').html($(this).data('description'));
+		$('.show-question-category').html($(this).data('category'));
+		$('.show-question-answer').html($(this).data('answer'));
+		var editLink = '/questions/' + $(this).data('id') + '/edit';
+		$('.edit-question').attr('href', editLink);
+		$('#question-id').val($(this).data('id'));
 	});
 
 });

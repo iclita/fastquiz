@@ -45,13 +45,19 @@
               @foreach ($articles as $index=>$article)
                   {{-- Make the first item active --}}
                   @if ($index === 0)
-                  <a class="list-group-item active show-article" 
-                    data-title="{{ $article->title }}" data-category="{{ $article->getCategoryName() }}" data-content="{{ $article->content }}"
-                  href="javascript:void(0);">
+                  <a class="list-group-item active show-article"
+                    data-id="{{ $article->id }}" 
+                    data-title="{{ $article->title }}" 
+                    data-category="{{ $article->getCategoryName() }}" 
+                    data-content="{{ $article->content }}"
+                    href="javascript:void(0);">
                   @else
                   <a class="list-group-item show-article" 
-                  data-title="{{ $article->title }}" data-category="{{ $article->getCategoryName() }}" data-content="{{ $article->content }}"
-                  href="javascript:void(0);">
+                    data-id="{{ $article->id }}"
+                    data-title="{{ $article->title }}" 
+                    data-category="{{ $article->getCategoryName() }}" 
+                    data-content="{{ $article->content }}"
+                    href="javascript:void(0);">
                   @endif
                     <img src="{{ $article->getCategoryIcon() }}" class="img-rounded pull-left"/>
                     <h4 class="list-group-item-heading">{{ short($article->title) }}</h4>
@@ -73,11 +79,11 @@
 
         <div class="panel panel-default">
           <div class="panel-heading clearfix">
-              <a class="btn btn-danger pull-left delete-article" href="javascript:void(0);" data-id="{{ $articles[0]->id }}">
+              <a class="btn btn-danger pull-left delete-article" href="javascript:void(0);" data-id="{{ $articles->first()->id }}">
                 <i class="fa fa-times"></i>
                 Delete
               </a>
-              <a class="btn btn-primary pull-right" href="{{ route('edit-article', ['id'=>$articles[0]->id]) }}">
+              <a class="btn btn-primary pull-right edit-article" href="{{ route('edit-article', ['id'=>$articles->first()->id]) }}">
                 <i class="fa fa-pencil"></i>
                 Edit
               </a>
@@ -85,14 +91,14 @@
             <div class="list-group">
               <div class="list-group-item">
                 <p class="list-group-item-text">Title</p>
-                <h4 class="list-group-item-heading show-article-title">{{ $articles[0]->title }}</h4>
+                <h4 class="list-group-item-heading show-article-title">{{ $articles->first()->title }}</h4>
               </div>
               <div class="list-group-item">
                 <p class="list-group-item-text">Category</p>
-                <h4 class="list-group-item-heading show-article-category">{{ $articles[0]->getCategoryName() }}</h4>
+                <h4 class="list-group-item-heading show-article-category">{{ $articles->first()->getCategoryName() }}</h4>
               </div>
               <div class="list-group-item">
-                <p class="list-group-item-text show-article-content">{{ $articles[0]->content }}</p>
+                <p class="list-group-item-text show-article-content">{{ $articles->first()->content }}</p>
               </div>
             </div>
           <div class="panel-footer">
@@ -166,25 +172,27 @@
 @stop
 
 @section('modal')
-<div class="modal fade" id="delete-article-modal" role="dialog" aria-labelledby="article-modal-label" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="article-modal-label">Delete Article</h4>
-      </div>
-      <div class="modal-body">
-        <p>Are you sure you want to delete this article?</p>
-        <form id="delete-article-form" role="form" method="POST" action="{{ route('delete-article') }}">
-          {{ csrf_field() }}
-          <input type="hidden" id="article-id" name="id" value="" />
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i> No</button>
-        <button type="button" id="delete-article-button" class="btn btn-success"><i class="fa fa-check" aria-hidden="true"></i> Yes</button>
+  @if ($articles->count() > 0)
+  <div class="modal fade" id="delete-article-modal" role="dialog" aria-labelledby="article-modal-label" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="article-modal-label">Delete Article</h4>
+        </div>
+        <div class="modal-body">
+          <p>Are you sure you want to delete this article?</p>
+          <form id="delete-article-form" role="form" method="POST" action="{{ route('delete-article') }}">
+            {{ csrf_field() }}
+            <input type="hidden" id="article-id" name="id" value="{{ $articles->first()->id }}" />
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i> No</button>
+          <button type="button" id="delete-article-button" class="btn btn-success"><i class="fa fa-check" aria-hidden="true"></i> Yes</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
+  @endif
 @stop

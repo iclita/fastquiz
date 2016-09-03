@@ -22,7 +22,7 @@ class Question extends Model
      *
      * @var array
      */
-    protected $fillable = ['description', 'choice_a', 'choice_b', 'choice_c', 'choice_d', 'category_id'];
+    protected $fillable = ['description', 'choice_a', 'choice_b', 'choice_c', 'choice_d', 'correct', 'category_id'];
 
     /**
      * The colums that are searchable.
@@ -30,7 +30,7 @@ class Question extends Model
      *
      * @var array
      */
-   protected $searchableColumns = ['description', 'choice_a', 'choice_b', 'choice_c', 'choice_d'];
+   protected $searchableColumns = ['description'];
 
 	/**
      * The number of questions per page on the private area.
@@ -38,6 +38,18 @@ class Question extends Model
      * @constant ITEMS_PER_PAGE int
      */
     const ITEMS_PER_PAGE = 10;
+
+	/**
+	 * Get the correct answer for this Question.
+	 *
+	 * @return string
+	 */
+    public function getAnswer()
+    {
+    	$choice = 'choice_' . $this->correct;
+
+    	return $this->{$choice};
+    }
 
 	/**
 	 * The Question can belong to only one Category.

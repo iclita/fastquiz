@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Repositories\Privates\ArticleRepository;
 use App\Http\Requests\ArticleRequest;
+use App\Repositories\ArticleRepository;
 
 class ArticleController extends Controller
 {

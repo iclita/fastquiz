@@ -18,7 +18,7 @@ class CreateQuestionsTable extends Migration
             $table->foreign('category_id')->references('id')->on('categories');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->text('description');
+            $table->string('description');
             $table->string('choice_a');
             $table->string('choice_b');
             $table->string('choice_c');

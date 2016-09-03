@@ -1693,3 +1693,11 @@ select.form-control {
 .no-results a {
 	text-decoration: underline;
 }
+
+.question-choice {
+	margin-bottom: 15px;
+}
+
+.question-choice .input-group-addon {
+	padding-top: 10px;
+}

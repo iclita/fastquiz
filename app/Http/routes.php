@@ -19,9 +19,29 @@ Route::get('callback', 'HomeController@handleProviderCallback')->name('callback'
 Route::get('/', 'HomeController@home')->name('home');
 
 // Articles management
-Route::get('article/create', 'ArticleController@create')->name('create-article');
-Route::post('article/store', 'ArticleController@store')->name('store-article');
-Route::get('article/{id}/edit', 'ArticleController@edit')->name('edit-article');
-Route::post('article/{id}/update', 'ArticleController@update')->name('update-article');
-Route::post('article/delete', 'ArticleController@delete')->name('delete-article');
-Route::get('articles', 'ArticleController@index')->name('articles');
+Route::group(['prefix' => 'articles'], function () {
+	Route::get('/create', 'ArticleController@create')->name('create-article');
+	Route::post('/store', 'ArticleController@store')->name('store-article');
+	Route::get('/{id}/edit', 'ArticleController@edit')->name('edit-article');
+	Route::post('/{id}/update', 'ArticleController@update')->name('update-article');
+	Route::post('/delete', 'ArticleController@delete')->name('delete-article');
+	Route::get('/', 'ArticleController@index')->name('articles');
+});
+
+// Questions management
+Route::group(['prefix' => 'questions'], function () {
+	Route::get('/create', 'QuestionController@create')->name('create-question');
+	Route::post('/store', 'QuestionController@store')->name('store-question');
+	Route::get('/{id}/edit', 'QuestionController@edit')->name('edit-question');
+	Route::post('/{id}/update', 'QuestionController@update')->name('update-question');
+	Route::post('/delete', 'QuestionController@delete')->name('delete-question');
+	Route::get('/', 'QuestionController@index')->name('questions');
+});
+
+Route::get('test', function(){
+
+	$q = request()->input('q');
+
+	dd(\App\Question::search($q)->get());
+
+});

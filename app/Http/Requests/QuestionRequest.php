@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use App\Http\Requests\Request;
 use Auth;
 
-class ArticleRequest extends Request
+class QuestionRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,10 +25,13 @@ class ArticleRequest extends Request
     public function rules()
     {
         return [
-            'title'    => 'required|max:50',
-            'category' => 'required|exists:categories,id',
-            'content'  => 'required|min:100|max:1500',
-            // 'g-recaptcha-response' => 'required|captcha',
+            'description' => 'required|max:150',
+            'category'    => 'required|exists:categories,id',
+            'choice_a'    => 'required|max:50',
+            'choice_b'    => 'required|max:50',
+            'choice_c'    => 'required|max:50',
+            'choice_d'    => 'required|max:50',
+            'correct'     => 'required|in:a,b,c,d',
         ];
     }
 }
