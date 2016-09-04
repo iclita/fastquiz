@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('title')
-    FastQuiz - Test your knowledge speed
+    FastQuiz - @lang('home.motto')
 @stop
 
 @section('content')
@@ -12,15 +12,15 @@
             <div class="item active"> 
                 <div class="carousel-caption"> 
                     <div> 
-                        <h2 class="heading animated bounceInDown home-text">FastQuiz - Test your knowledge speed</h2> 
-                        <p class="animated bounceInUp home-text">Are you fast enough?</p> 
+                        <h2 class="heading animated bounceInDown home-text">FastQuiz - @lang('home.motto')</h2> 
+                        <p class="animated bounceInUp home-text">@lang('home.fast')</p> 
                         @if (Auth::guest())
-                        <a class="btn btn-social btn-block btn-facebook" href="{{ route('register') }}">
-                            <span class="fa fa-facebook"></span> <span class="fb-text">Sign in with Facebook</span>
+                        <a class="btn btn-social btn-block btn-facebook material-box" href="{{ route('register') }}">
+                            <span class="fa fa-facebook"></span> <span class="fb-text">@lang('home.sign_in')</span>
                         </a>
                         @else
-                        <a class="btn btn-default slider-btn animated fadeIn" href="{{ route('login') }}">
-                            <i class="fa fa-play-circle" aria-hidden="true"></i>&nbsp;Play Now
+                        <a class="btn btn-default slider-btn animated fadeIn play-now material-box" href="{{ route('login') }}">
+                            <i class="fa fa-play-circle" aria-hidden="true"></i>&nbsp;@lang('home.play')
                         </a>
                         @endif 
                     </div> 
@@ -34,7 +34,7 @@
     <div class="container">
         <div class="row text-center">
             <div class="col-sm-8 col-sm-offset-2">
-                <h2 class="title-one">How it works</h2>
+                <h2 class="title-one">@lang('home.menu.how_it_works')</h2>
             </div>
         </div>
         <div class="row">
@@ -73,7 +73,7 @@
     <div class="container">
         <div class="row text-center clearfix">
             <div class="col-sm-8 col-sm-offset-2">
-                <h2 class="title-one">Brain Food</h2>
+                <h2 class="title-one">@lang('home.menu.brain_food')</h2>
             </div>
         </div> 
         <div class="row">
@@ -88,7 +88,7 @@
                     <div class="blog-content">
                         <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
                     </div>
-                    <a href="" class="btn btn-primary" data-toggle="modal" data-target="#blog-detail">Read More</a>
+                    <a href="" class="btn btn-primary" data-toggle="modal" data-target="#blog-detail">@lang('home.read_more')</a>
                 </div>
                 <div class="modal fade" id="blog-detail" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog">
@@ -114,7 +114,7 @@
                     <div class="blog-content">
                         <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
                     </div>
-                    <a href="" class="btn btn-primary" data-toggle="modal" data-target="#blog-two">Read More</a>
+                    <a href="" class="btn btn-primary" data-toggle="modal" data-target="#blog-two">@lang('home.read_more')</a>
                 </div>
                 <div class="modal fade" id="blog-two" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog">
@@ -140,7 +140,7 @@
                     <div class="blog-content">
                         <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
                     </div>
-                    <a href="" class="btn btn-primary" data-toggle="modal" data-target="#blog-three">Read More</a>
+                    <a href="" class="btn btn-primary" data-toggle="modal" data-target="#blog-three">@lang('home.read_more')</a>
                 </div>
                 <div class="modal fade" id="blog-three" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog">
@@ -166,7 +166,7 @@
                     <div class="blog-content">
                         <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
                     </div>
-                    <a href="" class="btn btn-primary" data-toggle="modal" data-target="#blog-four">Read More</a>
+                    <a href="" class="btn btn-primary" data-toggle="modal" data-target="#blog-four">@lang('home.read_more')</a>
                 </div>
                 <div class="modal fade" id="blog-four" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog">
@@ -192,7 +192,7 @@
                     <div class="blog-content">
                         <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
                     </div>
-                    <a href="" class="btn btn-primary" data-toggle="modal" data-target="#blog-six">Read More</a>
+                    <a href="" class="btn btn-primary" data-toggle="modal" data-target="#blog-six">@lang('home.read_more')</a>
                 </div>
                 <div class="modal fade" id="blog-six" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog">
@@ -218,7 +218,7 @@
                     <div class="blog-content">
                         <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
                     </div>
-                    <a href="" class="btn btn-primary" data-toggle="modal" data-target="#blog-seven">Read More</a>
+                    <a href="" class="btn btn-primary" data-toggle="modal" data-target="#blog-seven">@lang('home.read_more')</a>
                 </div>
                 <div class="modal fade" id="blog-seven" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog">
@@ -243,7 +243,7 @@
 <footer id="footer"> 
     <div class="container"> 
         <div class="text-center"> 
-            <p>{{ date('Y') }} &copy; FastQuiz.net | All Rights Reserved</p> 
+            <p>{{ date('Y') }} &copy; FastQuiz.net | @lang('home.rights')</p> 
         </div> 
     </div> 
 </footer>

@@ -6,11 +6,19 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests\RedirectRequest;
 use Auth;
+use Cookie;
 use Socialite;
 use App\User;
 
 class HomeController extends Controller
 {
+    /**
+     * The languages accepted by the application.
+     *
+     * @var array
+     */
+    private $acceptedLanguages = ['en', 'de'];
+
 	/**
      * Home page.
      *
@@ -71,5 +79,21 @@ class HomeController extends Controller
         Auth::login($authUser, true);
 
         return redirect('/');
+    }
+
+    /**
+     * Change the language according to the user preference
+     *
+     * @param Request  $request
+     * @return Response
+     */
+    public function changeLanguage(Request $request)
+    {
+        if(is_null($request->input('lang')) || !in_array($request->input('lang'), $this->acceptedLanguages)) {
+            return redirect('/');
+        }
+        
+        Cookie::queue('fastquiz-lang', $request->input('lang'), 2628000);
+        return redirect()->to($request->input('url'));
     }
 }

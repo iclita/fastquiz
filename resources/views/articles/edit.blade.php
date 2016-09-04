@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('title')
-    FastQuiz - Edit Article
+    FastQuiz - @lang('article.edit_article')
 @stop
 
 @section('content')
@@ -9,17 +9,17 @@
 <div class="container profile-container">
     <div class="row card-container">
         <div class="col-md-8 col-md-offset-2 first-item-panel">
-            <div class="panel panel-default">
+            <div class="panel panel-default material-box">
               <div class="panel-heading clearfix">
-                <h3 class="panel-title pull-left">Edit Article</h3>
+                <h3 class="panel-title pull-left">@lang('article.edit_article')</h3>
                 <div class="btn-group pull-right">
-                  <a class="btn btn-danger" href="{{ route('articles') }}">
+                  <a class="btn btn-danger material-box" href="{{ route('articles') }}">
                     <i class="fa fa-times"></i>
-                    Cancel
+                    @lang('article.cancel')
                   </a>
-                  <button class="btn btn-success item-save">
+                  <button class="btn btn-success item-save material-box">
                     <i class="fa fa-check"></i>
-                    Save
+                    @lang('article.save')
                   </button>
                 </div>
               </div>
@@ -31,7 +31,7 @@
                       @if ($errors->has('category'))
                       <p class="input-error">{{ $errors->first('category') }}</p>
                       @endif
-                    {!! Form::select('category', categories(), $article->category->id, ['class'=>'form-control', 'required', 'placeholder' => 'Choose a category']) !!}
+                    {!! Form::select('category', categories(), $article->category->id, ['class'=>'form-control material-box', 'required', 'placeholder' => trans('article.choose_category')]) !!}
                     </div>
                   </div>
 
@@ -40,7 +40,7 @@
                       @if ($errors->has('title'))
                       <p class="input-error">{{ $errors->first('title') }}</p>
                       @endif
-                      {!! Form::text('title', null, ['class'=>'form-control', 'required', 'maxlength'=>'50', 'placeholder'=>'Title (max. 50 characters)']) !!}
+                      {!! Form::text('title', null, ['class'=>'form-control material-box', 'required', 'maxlength'=>'50', 'placeholder'=>trans('article.choose_title')]) !!}
                     </div>
                   </div>
 
@@ -49,7 +49,7 @@
                       @if ($errors->has('content'))
                       <p class="input-error">{{ $errors->first('content') }}</p>
                       @endif
-                      {!! Form::textarea('content', null, ['class'=>'form-control', 'rows'=>'10', 'required', 'minlength'=>'100', 'maxlength'=>'1500', 'placeholder'=>'Content (min. 100 characters and max. 1500 characters)']) !!}
+                      {!! Form::textarea('content', null, ['class'=>'form-control material-box', 'rows'=>'10', 'required', 'minlength'=>'100', 'maxlength'=>'1500', 'placeholder'=>trans('article.choose_content')]) !!}
                     </div>
                   </div>
 
@@ -62,7 +62,7 @@
                 {!! Form::close() !!}
               </div>
               <div class="panel-footer">
-                <small>FastQuiz - Test your knowledge speed</small>
+                <small>FastQuiz - @lang('home.motto')</small>
               </div>
             </div>
         </div>

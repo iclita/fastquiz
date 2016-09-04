@@ -49,18 +49,18 @@
                     <ul class="nav navbar-nav navbar-right"> 
                         @if (Request::is('/'))
                         <li class="scroll active">
-                            <a href="#navigation">
-                                <i class="fa fa-home" aria-hidden="true">&nbsp;</i>Home
+                            <a class="material-box btn-menu-space" href="#navigation">
+                                <i class="fa fa-home" aria-hidden="true">&nbsp;</i>@lang('home.menu.home')
                             </a>
                         </li> 
                         <li class="scroll">
-                            <a href="#services">
-                                <i class="fa fa-cog" aria-hidden="true"></i>&nbsp;How it works
+                            <a class="material-box btn-menu-space" href="#services">
+                                <i class="fa fa-cog" aria-hidden="true"></i>&nbsp;@lang('home.menu.how_it_works')
                             </a>
                         </li> 
                         <li class="scroll">
-                            <a href="#blog">
-                                <i class="fa fa-graduation-cap" aria-hidden="true"></i>&nbsp;Brain Food
+                            <a class="material-box btn-menu-space" href="#blog">
+                                <i class="fa fa-graduation-cap" aria-hidden="true"></i>&nbsp;@lang('home.menu.brain_food')
                             </a>
                         </li>
                         @endif
@@ -68,32 +68,32 @@
                         <li class="scroll">
                             <div class="dropdown profile">
                                 <img class="avatar" src="{{ Auth::user()->getAvatar() }}" />
-                                <a class="logout" id="dLabel" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }}<span class="caret"></span>
+                                <a class="logout material-box" id="dLabel" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }}<span class="caret"></span>
                                 </a>
-                                <ul class="dropdown-menu" aria-labelledby="dLabel">
+                                <ul class="dropdown-menu material-box" aria-labelledby="dLabel">
                                     <li class="scroll">
                                         <a class="logout" href="{{ route('home') }}">
-                                            <i class="fa fa-home" aria-hidden="true"></i>&nbsp;Home
+                                            <i class="fa fa-home" aria-hidden="true"></i>&nbsp;@lang('home.menu.home')
                                         </a>
                                     </li>
                                     <li class="scroll">
                                         <a class="logout" href="{{ Auth::user()->getProfile() }}" target="_blank">
-                                            <i class="fa fa-user" aria-hidden="true"></i>&nbsp;Profile
+                                            <i class="fa fa-user" aria-hidden="true"></i>&nbsp;@lang('home.menu.profile')
                                         </a>
                                     </li>
                                     <li class="scroll">
                                         <a class="logout" href="{{ route('questions') }}">
-                                            <i class="fa fa-question-circle" aria-hidden="true"></i>&nbsp;My Questions
+                                            <i class="fa fa-question-circle" aria-hidden="true"></i>&nbsp;@lang('home.menu.my_questions')
                                         </a>
                                     </li>
                                     <li class="scroll">
                                         <a class="logout" href="{{ route('articles') }}">
-                                            <i class="fa fa-book" aria-hidden="true"></i>&nbsp;My Articles
+                                            <i class="fa fa-book" aria-hidden="true"></i>&nbsp;@lang('home.menu.my_articles')
                                         </a>
                                     </li>
                                     <li class="scroll">
                                         <a class="logout" href="{{ route('logout') }}">
-                                            <i class="fa fa-power-off" aria-hidden="true"></i>&nbsp;Logout
+                                            <i class="fa fa-power-off" aria-hidden="true"></i>&nbsp;@lang('home.menu.logout')
                                         </a>
                                     </li>
                                 </ul>
