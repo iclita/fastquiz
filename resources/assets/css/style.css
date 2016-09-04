@@ -1694,6 +1694,10 @@ select.form-control {
 	text-decoration: underline;
 }
 
+.card-container {
+	margin-top: 50px;
+}
+
 .question-choice {
 	margin-bottom: 15px;
 }

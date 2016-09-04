@@ -7,8 +7,7 @@
 @section('content')
 
 <div class="container profile-container">
-    <h2><a href="{{ route('questions') }}">My Questions</a></h2>
-    <div class="row">
+    <div class="row card-container">
         <div class="col-md-8 col-md-offset-2 first-item-panel">
             <div class="panel panel-default">
               <div class="panel-heading clearfix">
@@ -30,20 +29,20 @@
                   {{ csrf_field() }}
 
                   <div class="form-group">
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                      @if ($errors->has('description'))
-                      <p class="input-error">{{ $errors->first('description') }}</p>
-                      @endif
-                      <textarea name="description" class="form-control" rows="5" required maxlength="150" placeholder="Description (max. 150 characters)">{{ old('description') }}</textarea>
-                    </div>
-                  </div>
-
-                  <div class="form-group">
                     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                       @if ($errors->has('category'))
                       <p class="input-error">{{ $errors->first('category') }}</p>
                       @endif
                     {!! Form::select('category', categories(), old('category'), ['class'=>'form-control', 'required', 'placeholder' => 'Choose a category']) !!}
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                      @if ($errors->has('description'))
+                      <p class="input-error">{{ $errors->first('description') }}</p>
+                      @endif
+                      <textarea name="description" class="form-control" rows="5" required maxlength="150" placeholder="Question (max. 150 characters)">{{ old('description') }}</textarea>
                     </div>
                   </div>
 

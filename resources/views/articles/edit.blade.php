@@ -7,8 +7,7 @@
 @section('content')
 
 <div class="container profile-container">
-    <h2><a href="{{ route('articles') }}">My Articles</a></h2>
-    <div class="row">
+    <div class="row card-container">
         <div class="col-md-8 col-md-offset-2 first-item-panel">
             <div class="panel panel-default">
               <div class="panel-heading clearfix">
@@ -26,14 +25,7 @@
               </div>
               <div class="modal-body">
                 {!! Form::model($article, ['method'=>'POST', 'route'=>['update-article', 'id'=>$article->id], 'class'=>'form-horizontal item-form']) !!}
-                  <div class="form-group">
-                    <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
-                      @if ($errors->has('title'))
-                      <p class="input-error">{{ $errors->first('title') }}</p>
-                      @endif
-                      {!! Form::text('title', null, ['class'=>'form-control', 'required', 'maxlength'=>'50', 'placeholder'=>'Title (max. 50 characters)']) !!}
-                    </div>
-                  </div>
+
                   <div class="form-group">
                     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                       @if ($errors->has('category'))
@@ -42,6 +34,16 @@
                     {!! Form::select('category', categories(), $article->category->id, ['class'=>'form-control', 'required', 'placeholder' => 'Choose a category']) !!}
                     </div>
                   </div>
+
+                  <div class="form-group">
+                    <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                      @if ($errors->has('title'))
+                      <p class="input-error">{{ $errors->first('title') }}</p>
+                      @endif
+                      {!! Form::text('title', null, ['class'=>'form-control', 'required', 'maxlength'=>'50', 'placeholder'=>'Title (max. 50 characters)']) !!}
+                    </div>
+                  </div>
+
                   <div class="form-group">
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                       @if ($errors->has('content'))

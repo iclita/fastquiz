@@ -90,12 +90,12 @@
             </div>
             <div class="list-group">
               <div class="list-group-item">
-                <p class="list-group-item-text">Description</p>
-                <h4 class="list-group-item-heading show-question-description">{{ $questions->first()->description }}</h4>
-              </div>
-              <div class="list-group-item">
                 <p class="list-group-item-text">Category</p>
                 <h4 class="list-group-item-heading show-question-category">{{ $questions->first()->getCategoryName() }}</h4>
+              </div>
+              <div class="list-group-item">
+                <p class="list-group-item-text">Question</p>
+                <h4 class="list-group-item-heading show-question-description">{{ $questions->first()->description }}</h4>
               </div>
               <div class="list-group-item">
                 <p class="list-group-item-text">Answer</p>

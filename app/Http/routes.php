@@ -37,11 +37,3 @@ Route::group(['prefix' => 'questions'], function () {
 	Route::post('/delete', 'QuestionController@delete')->name('delete-question');
 	Route::get('/', 'QuestionController@index')->name('questions');
 });
-
-Route::get('test', function(){
-
-	$q = request()->input('q');
-
-	dd(\App\Question::search($q)->get());
-
-});
