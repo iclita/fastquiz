@@ -1711,13 +1711,6 @@ select.form-control {
 	margin-right: 5px;
 }
 
-.material-box {
-	border-radius: 0 !important;
-	-moz-border-radius: 0 !important;
-	-webkit-border-radius: 0 !important;
-	box-shadow: 0 3px 6px rgba(0,0,0,0.16),0 3px 6px rgba(0,0,0,0.23) !important;
-}
-
 .play-now {
 	background-color: #84c446 !important;
 	border-width: 0 !important;
@@ -1725,11 +1718,58 @@ select.form-control {
 }
 
 .play-now:hover {
-	background-color: #5cb85c !important;
+	background-color: #449d44 !important;
 	border-width: 0 !important;
 	box-shadow: 0 3px 6px rgba(0,0,0,0.16),0 3px 6px rgba(0,0,0,0.23) !important;
 }
 
 .btn-group > a {
 	margin-right: 10px;
+}
+
+#lang-dropdown {
+	padding-bottom: 8px !important;
+}
+
+.lang-menu {
+	margin-top: 20px;
+}
+
+.logout {
+	cursor: pointer;
+}
+
+
+.material-box {
+	border-radius: 0 !important;
+	-moz-border-radius: 0 !important;
+	-webkit-border-radius: 0 !important;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16),0 3px 6px rgba(0,0,0,0.23) !important;
+}
+
+.lang-scroll {
+	margin-top:16px;
+}
+
+@media screen and (max-width: 992px) {
+	img.avatar {
+		display: none;
+	}
+	#lang-dropdown {
+		margin-left: 5px !important;
+		padding-left: 17px !important;
+	}
+	#avatar-dropdown {
+		margin-left: 7px !important;
+	}
+	.menu-scroll {
+		margin-top: 10px !important;
+	}
+	.lang-scroll {
+		margin-top: 22px !important;
+	}
+	.profile-scroll {
+		margin-left: -2px !important;
+    	margin-top: 27px !important;
+	}
 }

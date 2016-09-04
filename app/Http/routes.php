@@ -16,6 +16,7 @@ Route::get('login', 'HomeController@login')->name('login');
 Route::get('logout', 'HomeController@logout')->name('logout');
 Route::get('register', 'HomeController@redirectToProvider')->name('register');
 Route::get('callback', 'HomeController@handleProviderCallback')->name('callback');
+Route::get('change-language', 'HomeController@changeLanguage')->name('change-language');
 Route::get('/', 'HomeController@home')->name('home');
 
 // Articles management

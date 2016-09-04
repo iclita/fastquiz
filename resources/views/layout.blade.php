@@ -45,32 +45,56 @@
                     </button> 
                     <a class="navbar-brand" href="/"><h1><img src="/images/logo.png" alt="logo"></h1></a> 
                 </div> 
-                <div class="collapse navbar-collapse"> 
+                <div class="collapse navbar-collapse">
+
                     <ul class="nav navbar-nav navbar-right"> 
                         @if (Request::is('/'))
-                        <li class="scroll active">
+                        <li class="scroll active menu-scroll">
                             <a class="material-box btn-menu-space" href="#navigation">
                                 <i class="fa fa-home" aria-hidden="true">&nbsp;</i>@lang('home.menu.home')
                             </a>
                         </li> 
-                        <li class="scroll">
+                        <li class="scroll menu-scroll">
                             <a class="material-box btn-menu-space" href="#services">
                                 <i class="fa fa-cog" aria-hidden="true"></i>&nbsp;@lang('home.menu.how_it_works')
                             </a>
                         </li> 
-                        <li class="scroll">
+                        <li class="scroll menu-scroll">
                             <a class="material-box btn-menu-space" href="#blog">
                                 <i class="fa fa-graduation-cap" aria-hidden="true"></i>&nbsp;@lang('home.menu.brain_food')
                             </a>
                         </li>
+                        <li class="scroll lang-scroll"> 
+                            <div class="dropdown profile">
+                                <a class="logout material-box" id="lang-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-globe" aria-hidden="true"></i>&nbsp;@lang('home.menu.language')<span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu material-box lang-menu" aria-labelledby="lang-dropdown">
+                                    <li class="scroll">
+                                        <a class="logout" href="{{ route('change-language') }}?lang=en&url={{ Request::fullUrl() }}">
+                                            <span class="flag-icon flag-icon-gb"></span>&nbsp;@lang('home.menu.en')
+                                        </a>
+                                    </li>
+                                    <li class="scroll">
+                                        <a class="logout" href="{{ route('change-language') }}?lang=de&url={{ Request::fullUrl() }}">
+                                            <span class="flag-icon flag-icon-de"></span>&nbsp;@lang('home.menu.de')
+                                        </a>
+                                    </li>
+                                    <li class="scroll">
+                                        <a class="logout" href="{{ route('change-language') }}?lang=ro&url={{ Request::fullUrl() }}">
+                                            <span class="flag-icon flag-icon-ro"></span>&nbsp;@lang('home.menu.ro')
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                         </li>
                         @endif
                         @if (Auth::check())
-                        <li class="scroll">
+                        <li class="scroll profile-scroll">
                             <div class="dropdown profile">
                                 <img class="avatar" src="{{ Auth::user()->getAvatar() }}" />
-                                <a class="logout material-box" id="dLabel" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }}<span class="caret"></span>
+                                <a class="logout material-box" id="avatar-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;{{ Auth::user()->name }}<span class="caret"></span>
                                 </a>
-                                <ul class="dropdown-menu material-box" aria-labelledby="dLabel">
+                                <ul class="dropdown-menu material-box" aria-labelledby="avatar-dropdown">
                                     <li class="scroll">
                                         <a class="logout" href="{{ route('home') }}">
                                             <i class="fa fa-home" aria-hidden="true"></i>&nbsp;@lang('home.menu.home')

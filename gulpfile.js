@@ -23,6 +23,7 @@ elixir(function(mix) {
     	'prettyPhoto.css',
     	'reset.css',
     	'responsive.css',
+        'flag-icon.css',
     	'style.css',
     ], 'public/css/app.css');
 

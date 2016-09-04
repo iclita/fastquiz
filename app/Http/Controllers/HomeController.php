@@ -17,7 +17,7 @@ class HomeController extends Controller
      *
      * @var array
      */
-    private $acceptedLanguages = ['en', 'de'];
+    private $acceptedLanguages = ['en', 'de', 'ro'];
 
 	/**
      * Home page.
@@ -36,7 +36,7 @@ class HomeController extends Controller
      */
     public function login()
     {
-        return redirect('/')->with('error', 'You must log in first');
+        return redirect()->route('home')->with('error', 'You must log in first');
     }
 
     /**
@@ -48,7 +48,7 @@ class HomeController extends Controller
     {
         Auth::logout();
         
-        return redirect('/');
+        return redirect()->route('home');
     }
 
 	/**
@@ -71,14 +71,14 @@ class HomeController extends Controller
         try {
             $user = Socialite::driver('facebook')->user();
         } catch (\Exception $e) {
-            return redirect('/');
+            return redirect()->route('home');
         }
 
         $authUser = User::findOrCreate($user);
 
         Auth::login($authUser, true);
 
-        return redirect('/');
+        return redirect()->route('home');
     }
 
     /**
@@ -90,7 +90,7 @@ class HomeController extends Controller
     public function changeLanguage(Request $request)
     {
         if(is_null($request->input('lang')) || !in_array($request->input('lang'), $this->acceptedLanguages)) {
-            return redirect('/');
+            return redirect()->route('home');
         }
         
         Cookie::queue('fastquiz-lang', $request->input('lang'), 2628000);
