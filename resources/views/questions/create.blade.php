@@ -42,7 +42,7 @@
                       @if ($errors->has('description'))
                       <p class="input-error">{{ $errors->first('description') }}</p>
                       @endif
-                      <textarea name="description" class="form-control material-box" rows="5" required maxlength="150" placeholder="@lang('question.choose_description')">{{ old('description') }}</textarea>
+                      <textarea name="description" class="form-control material-box" rows="5" required maxlength="200" placeholder="@lang('question.choose_description')">{{ old('description') }}</textarea>
                     </div>
                   </div>
 
@@ -55,7 +55,7 @@
                         <span class="input-group-addon material-box">
                           {!! Form::radio('correct', 'a', old('correct') === 'a', ['aria-label' => 'choice_a']) !!}
                         </span>
-                        <input type="text" name="choice_a" class="form-control material-box" required maxlength="50" placeholder="@lang('question.first_choice')" value="{{ old('choice_a') }}" aria-label="choice_a"/>
+                        <input type="text" name="choice_a" class="form-control material-box" required maxlength="75" placeholder="@lang('question.first_choice')" value="{{ old('choice_a') }}" aria-label="choice_a"/>
                       </div>
                     </div>
                   </div>
@@ -69,7 +69,7 @@
                         <span class="input-group-addon material-box">
                           {!! Form::radio('correct', 'b', old('correct') === 'b', ['aria-label' => 'choice_b']) !!}
                         </span>
-                        <input type="text" name="choice_b" class="form-control material-box" required maxlength="50" placeholder="@lang('question.second_choice')" value="{{ old('choice_b') }}" aria-label="choice_b"/>
+                        <input type="text" name="choice_b" class="form-control material-box" required maxlength="75" placeholder="@lang('question.second_choice')" value="{{ old('choice_b') }}" aria-label="choice_b"/>
                       </div>
                     </div>
                   </div>
@@ -83,7 +83,7 @@
                         <span class="input-group-addon material-box">
                           {!! Form::radio('correct', 'c', old('correct') === 'c', ['aria-label' => 'choice_c']) !!}
                         </span>
-                        <input type="text" name="choice_c" class="form-control material-box" required maxlength="50" placeholder="@lang('question.third_choice')" value="{{ old('choice_c') }}" aria-label="choice_c"/>
+                        <input type="text" name="choice_c" class="form-control material-box" required maxlength="75" placeholder="@lang('question.third_choice')" value="{{ old('choice_c') }}" aria-label="choice_c"/>
                       </div>
                     </div>
                   </div>
@@ -97,7 +97,7 @@
                         <span class="input-group-addon material-box">
                           {!! Form::radio('correct', 'd', old('correct') === 'd', ['aria-label' => 'choice_d']) !!}
                         </span>
-                        <input type="text" name="choice_d" class="form-control material-box" required maxlength="50" placeholder="@lang('question.fourth_choice')" value="{{ old('choice_d') }}" aria-label="choice_d"/>
+                        <input type="text" name="choice_d" class="form-control material-box" required maxlength="75" placeholder="@lang('question.fourth_choice')" value="{{ old('choice_d') }}" aria-label="choice_d"/>
                       </div>
                     </div>
                   </div>

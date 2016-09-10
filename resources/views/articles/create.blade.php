@@ -42,7 +42,7 @@
                       @if ($errors->has('title'))
                       <p class="input-error">{{ $errors->first('title') }}</p>
                       @endif
-                      <input type="text" name="title" class="form-control material-box" required maxlength="50" placeholder="@lang('article.choose_title')" value="{{ old('title') }}"/>
+                      <input type="text" name="title" class="form-control material-box" required maxlength="100" placeholder="@lang('article.choose_title')" value="{{ old('title') }}"/>
                     </div>
                   </div>
                   
@@ -51,7 +51,7 @@
                       @if ($errors->has('content'))
                       <p class="input-error">{{ $errors->first('content') }}</p>
                       @endif
-                      <textarea name="content" class="form-control material-box" rows="10" required minlength="100" maxlength="1500" placeholder="@lang('article.choose_content')">{{ old('content') }}</textarea>
+                      <textarea name="content" class="form-control material-box" rows="10" required minlength="100" maxlength="3000" placeholder="@lang('article.choose_content')">{{ old('content') }}</textarea>
                     </div>
                   </div>
 

@@ -40,7 +40,7 @@
                       @if ($errors->has('title'))
                       <p class="input-error">{{ $errors->first('title') }}</p>
                       @endif
-                      {!! Form::text('title', null, ['class'=>'form-control material-box', 'required', 'maxlength'=>'50', 'placeholder'=>trans('article.choose_title')]) !!}
+                      {!! Form::text('title', null, ['class'=>'form-control material-box', 'required', 'maxlength'=>'100', 'placeholder'=>trans('article.choose_title')]) !!}
                     </div>
                   </div>
 
@@ -49,7 +49,7 @@
                       @if ($errors->has('content'))
                       <p class="input-error">{{ $errors->first('content') }}</p>
                       @endif
-                      {!! Form::textarea('content', null, ['class'=>'form-control material-box', 'rows'=>'10', 'required', 'minlength'=>'100', 'maxlength'=>'1500', 'placeholder'=>trans('article.choose_content')]) !!}
+                      {!! Form::textarea('content', null, ['class'=>'form-control material-box', 'rows'=>'10', 'required', 'minlength'=>'100', 'maxlength'=>'3000', 'placeholder'=>trans('article.choose_content')]) !!}
                     </div>
                   </div>
 

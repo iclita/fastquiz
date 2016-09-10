@@ -40,7 +40,7 @@
                       @if ($errors->has('description'))
                       <p class="input-error">{{ $errors->first('description') }}</p>
                       @endif
-                      {!! Form::textarea('description', null, ['class'=>'form-control material-box', 'rows'=>'5', 'required', 'maxlength'=>'150', 'placeholder'=>trans('question.choose_description')]) !!}
+                      {!! Form::textarea('description', null, ['class'=>'form-control material-box', 'rows'=>'5', 'required', 'maxlength'=>'200', 'placeholder'=>trans('question.choose_description')]) !!}
                     </div>
                   </div>
 
@@ -53,7 +53,7 @@
                         <span class="input-group-addon material-box">
                           {!! Form::radio('correct', 'a', ['aria-label' => 'choice_a']) !!}
                         </span>
-                        {!! Form::text('choice_a', null, ['class'=>'form-control material-box', 'required', 'maxlength'=>'50', 'placeholder'=>trans('question.first_choice'), 'aria-label' => 'choice_a']) !!}
+                        {!! Form::text('choice_a', null, ['class'=>'form-control material-box', 'required', 'maxlength'=>'75', 'placeholder'=>trans('question.first_choice'), 'aria-label' => 'choice_a']) !!}
                       </div>
                     </div>
                   </div>
@@ -67,7 +67,7 @@
                         <span class="input-group-addon material-box">
                           {!! Form::radio('correct', 'b', ['aria-label' => 'choice_b']) !!}
                         </span>
-                        {!! Form::text('choice_b', null, ['class'=>'form-control material-box', 'required', 'maxlength'=>'50', 'placeholder'=>trans('question.second_choice'), 'aria-label' => 'choice_b']) !!}
+                        {!! Form::text('choice_b', null, ['class'=>'form-control material-box', 'required', 'maxlength'=>'75', 'placeholder'=>trans('question.second_choice'), 'aria-label' => 'choice_b']) !!}
                       </div>
                     </div>
                   </div>
@@ -81,7 +81,7 @@
                         <span class="input-group-addon material-box">
                           {!! Form::radio('correct', 'c', ['aria-label' => 'choice_c']) !!}
                         </span>
-                        {!! Form::text('choice_c', null, ['class'=>'form-control material-box', 'required', 'maxlength'=>'50', 'placeholder'=>trans('question.third_choice'), 'aria-label' => 'choice_c']) !!}
+                        {!! Form::text('choice_c', null, ['class'=>'form-control material-box', 'required', 'maxlength'=>'75', 'placeholder'=>trans('question.third_choice'), 'aria-label' => 'choice_c']) !!}
                       </div>
                     </div>
                   </div>
@@ -95,7 +95,7 @@
                         <span class="input-group-addon material-box">
                           {!! Form::radio('correct', 'd', ['aria-label' => 'choice_d']) !!}
                         </span>
-                        {!! Form::text('choice_d', null, ['class'=>'form-control material-box', 'required', 'maxlength'=>'50', 'placeholder'=>trans('question.fourth_choice'), 'aria-label' => 'choice_d']) !!}
+                        {!! Form::text('choice_d', null, ['class'=>'form-control material-box', 'required', 'maxlength'=>'75', 'placeholder'=>trans('question.fourth_choice'), 'aria-label' => 'choice_d']) !!}
                       </div>
                     </div>
                   </div>

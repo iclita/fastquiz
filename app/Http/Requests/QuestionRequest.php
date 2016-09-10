@@ -25,12 +25,12 @@ class QuestionRequest extends Request
     public function rules()
     {
         return [
-            'description' => 'required|max:150',
+            'description' => 'required|max:200',
             'category'    => 'required|exists:categories,id',
-            'choice_a'    => 'required|max:50',
-            'choice_b'    => 'required|max:50',
-            'choice_c'    => 'required|max:50',
-            'choice_d'    => 'required|max:50',
+            'choice_a'    => 'required|max:75',
+            'choice_b'    => 'required|max:75',
+            'choice_c'    => 'required|max:75',
+            'choice_d'    => 'required|max:75',
             'correct'     => 'required|in:a,b,c,d',
         ];
     }

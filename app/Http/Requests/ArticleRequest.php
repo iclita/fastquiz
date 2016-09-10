@@ -25,9 +25,9 @@ class ArticleRequest extends Request
     public function rules()
     {
         return [
-            'title'    => 'required|max:50',
+            'title'    => 'required|max:100',
             'category' => 'required|exists:categories,id',
-            'content'  => 'required|min:100|max:1500',
+            'content'  => 'required|min:100|max:3000',
             // 'g-recaptcha-response' => 'required|captcha',
         ];
     }
