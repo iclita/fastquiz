@@ -555,6 +555,8 @@ if (window.location.hash == '#_=_'){
 // Custom JS code
 $(document).ready(function(){
 
+	$('[data-toggle="tooltip"]').tooltip()
+
 	$('.item-save').off('click').on('click', function(){
 		$('.item-form').submit();
 	});

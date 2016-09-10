@@ -21,5 +21,14 @@ return [
     'play' => 'Play Now',
     'read_more' => 'Read More',
     'rights' => 'All Rights Reserved',
+    'resources' => [
+    	'article' => 'article',
+    	'question' => 'question',
+    ],
+    'status' => [
+		'pending' => 'Your :item is pending approval',
+		'approved' => 'Your :item has been approved',
+		'rejected' => 'Your :item has been rejected',
+	],
 
 ];

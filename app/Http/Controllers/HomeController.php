@@ -9,6 +9,7 @@ use Auth;
 use Cookie;
 use Socialite;
 use App\User;
+use App\Article;
 
 class HomeController extends Controller
 {
@@ -26,7 +27,11 @@ class HomeController extends Controller
      */
     public function home()
     {
-        return view('home');
+        $articles = Article::random(8);
+
+        $articles->load('user');
+
+        return view('home', compact('articles'));
     }
     
 	/**

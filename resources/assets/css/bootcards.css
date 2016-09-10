@@ -139,7 +139,7 @@ a.list-group-item {
   overflow: hidden; }
 
 /* Disclosure Indicators */
-a.list-group-item:before {
+/*a.list-group-item:before {
   font-family: 'FontAwesome';
   content: '';
   position: absolute;
@@ -148,7 +148,7 @@ a.list-group-item:before {
   font-size: 14px;
   line-height: 14px;
   margin-top: -7px;
-  color: #ccc; }
+  color: #ccc; }*/
 
 .list-group.bootcards-no-indicators a.list-group-item:before {
   display: none; }

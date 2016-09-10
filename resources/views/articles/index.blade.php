@@ -62,6 +62,7 @@
                     <img src="{{ $article->getCategoryIcon() }}" class="img-rounded pull-left"/>
                     <h4 class="list-group-item-heading">{{ short($article->title) }}</h4>
                     <p class="list-group-item-text">@lang('article.category'): {{ $article->getCategoryName() }}</p>
+                    @include('partials.status', ['model' => $article])
                   </a>
               @endforeach
             </div>

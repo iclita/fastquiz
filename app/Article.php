@@ -3,12 +3,14 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Services\HasCategory;
 use Sofa\Eloquence\Eloquence;
+use App\Services\HasCategory;
+use App\Services\RandomSelect;
+use App\Services\CheckStatus;
 
 class Article extends Model
 {
-	use HasCategory, Eloquence;
+	use Eloquence, HasCategory, RandomSelect, CheckStatus;
 	
 	/**
 	 * The database table used by the model.
@@ -22,7 +24,7 @@ class Article extends Model
      *
      * @var array
      */
-    protected $fillable = ['title', 'content', 'category_id'];
+    protected $fillable = ['title', 'content', 'category_id', 'status'];
 
     /**
      * The colums that are searchable.
@@ -38,6 +40,16 @@ class Article extends Model
      * @constant ITEMS_PER_PAGE int
      */
     const ITEMS_PER_PAGE = 10;
+
+	/**
+	 * Get the name of this resource.
+	 *
+	 * @return string
+	 */
+    public function getResourceName()
+    {
+    	return trans('home.resources.article');
+    }
 
 	/**
 	 * The Article can belong to only one Category.

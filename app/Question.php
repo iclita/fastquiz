@@ -3,12 +3,14 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Services\HasCategory;
 use Sofa\Eloquence\Eloquence;
+use App\Services\HasCategory;
+use App\Services\RandomSelect;
+use App\Services\CheckStatus;
 
 class Question extends Model
 {
-    use HasCategory, Eloquence;
+    use Eloquence, HasCategory, RandomSelect, CheckStatus;
 	
 	/**
 	 * The database table used by the model.
@@ -38,6 +40,16 @@ class Question extends Model
      * @constant ITEMS_PER_PAGE int
      */
     const ITEMS_PER_PAGE = 10;
+
+	/**
+	 * Get the name of this resource.
+	 *
+	 * @return string
+	 */
+    public function getResourceName()
+    {
+    	return trans('home.resources.question');
+    }
 
 	/**
 	 * Get the correct answer for this Question.

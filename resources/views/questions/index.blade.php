@@ -62,6 +62,7 @@
                     <img src="{{ $question->getCategoryIcon() }}" class="img-rounded pull-left"/>
                     <h4 class="list-group-item-heading">{{ short($question->description) }}</h4>
                     <p class="list-group-item-text">@lang('question.category'): {{ $question->getCategoryName() }}</p>
+                    @include('partials.status', ['model' => $question])
                   </a>
               @endforeach
             </div>

@@ -17,6 +17,7 @@ return [
 	'create' => 'Create',
 	'edit' => 'Edit',
 	'delete' => 'Delete',
+	'close' => 'Close',
 	'looking_for' => 'What are you looking for?',
 	'search' => 'Search',
 	'category' => 'Category',
