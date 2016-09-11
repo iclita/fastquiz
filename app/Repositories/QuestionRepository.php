@@ -47,8 +47,6 @@ class QuestionRepository {
 			$questions = Auth::user()->questions()
 									 ->orderByRaw('updated_at desc, created_at desc')
 									 ->paginate(Question::ITEMS_PER_PAGE);
-			// Eager load all the relations
-			$questions->load('category', 'user');
 		}else{
 			// If the user did not select a specific category it means we must search through all categories
 			if (empty($query['category'])) {
@@ -78,6 +76,9 @@ class QuestionRepository {
 				}
 			}
 		}
+
+		// Eager load all the relations
+		$questions->load('category', 'user');
 
 		return $questions;
 	}
