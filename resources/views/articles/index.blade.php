@@ -21,20 +21,28 @@
           <div class="panel panel-default material-box">
 
             <div class="panel-body">
-              <form class="form-inline" method="GET" action="{{ route('articles') }}">
+              <form method="GET" action="{{ route('articles') }}">
                 <input type="hidden" name="search" value="true" />
                 <div class="row">
-                  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    
+                  <div style="padding-right:10px;" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">                      
                     <div class="form-group">
                       <input type="text" class="form-control material-box" name="keywords" value="{{ Request::input('keywords', '') }}" placeholder="@lang('article.looking_for')">
                       <i class="fa fa-search"></i>
                     </div>
+                  </div>                    
+                </div>
+                <div style="margin-top:15px;" class="row">
+                  <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5">
                     <div class="form-group">
-                      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                      {!! Form::select('category', categories(), Request::input('category', ''), ['class'=>'form-control material-box', 'placeholder' => 'All categories']) !!}
-                      </div>
+                      {!! Form::select('category', categories(), Request::input('category', ''), ['class'=>'form-control material-box', 'placeholder' => trans('article.all_categories')]) !!}
                     </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5">
+                    <div class="form-group">
+                      {!! Form::select('status', trans('article.status'), Request::input('status', ''), ['class'=>'form-control material-box', 'placeholder' => trans('article.all_articles')]) !!}
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
                     <button type="submit" class="btn btn-primary material-box">@lang('article.search')</button>
                   </div>
                 </div>

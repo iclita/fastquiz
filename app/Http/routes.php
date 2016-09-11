@@ -38,3 +38,14 @@ Route::group(['prefix' => 'questions'], function () {
 	Route::post('/delete', 'QuestionController@delete')->name('delete-question');
 	Route::get('/', 'QuestionController@index')->name('questions');
 });
+
+// Admin area (Security measures need to be taken)
+Route::group(['prefix' => env('ADMIN_ROUTE')], function () {
+    // Auth
+    Route::get('login', 'AdminController@getLogin')->name('admin.get.login');
+    Route::post('login', 'AdminController@postLogin')->name('admin.post.login');
+    Route::get('logout', 'AdminController@getLogout')->name('admin.get.logout');
+    // Dashboard
+    Route::get('dashboard', 'AdminController@dashboard')->name('admin.get.dashboard');
+});
+

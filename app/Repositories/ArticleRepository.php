@@ -47,21 +47,38 @@ class ArticleRepository {
 			$articles = Auth::user()->articles()
 									->orderByRaw('updated_at desc, created_at desc')
 									->paginate(Article::ITEMS_PER_PAGE);
-			// Eager load all the relations
-			$articles->load('category', 'user');
 		}else{
 			// If the user did not select a specific category it means we must search through all categories
 			if (empty($query['category'])) {
-				$articles = Article::search($query['keywords'])->where('user_id', Auth::id())
-															   ->orderByRaw('updated_at desc, created_at desc')
-															   ->paginate(Article::ITEMS_PER_PAGE);
+				// If no status filtering has been applied search through all articles
+				if (empty($query['status'])) {
+					$articles = Article::search($query['keywords'])->where('user_id', Auth::id())
+																   ->orderByRaw('updated_at desc, created_at desc')
+																   ->paginate(Article::ITEMS_PER_PAGE);
+				}else{
+					$articles = Article::search($query['keywords'])->where('user_id', Auth::id())
+																   ->where('status', $query['status'])
+																   ->orderByRaw('updated_at desc, created_at desc')
+																   ->paginate(Article::ITEMS_PER_PAGE);					
+				}
 			}else{
-				$articles = Article::search($query['keywords'])->where('user_id', Auth::id())
-															   ->where('category_id', $query['category'])
-															   ->orderByRaw('updated_at desc, created_at desc')
-															   ->paginate(Article::ITEMS_PER_PAGE);				
+				if (empty($query['status'])) {				
+					$articles = Article::search($query['keywords'])->where('user_id', Auth::id())
+																   ->where('category_id', $query['category'])
+																   ->orderByRaw('updated_at desc, created_at desc')
+																   ->paginate(Article::ITEMS_PER_PAGE);				
+				}else{
+					$articles = Article::search($query['keywords'])->where('user_id', Auth::id())
+																   ->where('category_id', $query['category'])
+																   ->where('status', $query['status'])
+																   ->orderByRaw('updated_at desc, created_at desc')
+																   ->paginate(Article::ITEMS_PER_PAGE);						
+				}
 			}
 		}
+
+		// Eager load all the relations
+		$articles->load('category', 'user');
 
 		return $articles;
 	}

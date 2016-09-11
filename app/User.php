@@ -18,7 +18,7 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = ['name', 'facebook_id'];
+    protected $fillable = ['name', 'facebook_id', 'score'];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -63,6 +63,16 @@ class User extends Authenticatable
     public function getAvatar()
     {
         return 'https://graph.facebook.com/v2.7/' . $this->facebook_id . '/picture?type=large';
+    }
+
+    /**
+     * Check if the user is an Admin.
+     *
+     * @return bool
+     */
+    public function isAdmin()
+    {
+        return $this->type === 'admin';
     }
 
     /**

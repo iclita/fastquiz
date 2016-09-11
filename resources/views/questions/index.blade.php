@@ -21,20 +21,28 @@
           <div class="panel panel-default material-box">
 
             <div class="panel-body">
-              <form class="form-inline" method="GET" action="{{ route('questions') }}">
+              <form method="GET" action="{{ route('questions') }}">
                 <input type="hidden" name="search" value="true" />
                 <div class="row">
-                  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    
+                  <div style="padding-right:10px;" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">  
                     <div class="form-group">
                       <input type="text" class="form-control material-box" name="keywords" value="{{ Request::input('keywords', '') }}" placeholder="@lang('question.looking_for')">
                       <i class="fa fa-search"></i>
                     </div>
+                  </div>
+                </div>
+                <div style="margin-top:15px;" class="row">
+                  <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5">
                     <div class="form-group">
-                      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                       {!! Form::select('category', categories(), Request::input('category', ''), ['class'=>'form-control material-box', 'placeholder' => 'All categories']) !!}
-                      </div>
                     </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5">
+                    <div class="form-group">
+                      {!! Form::select('status', trans('question.status'), Request::input('status', ''), ['class'=>'form-control material-box', 'placeholder' => trans('question.all_questions')]) !!}
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
                     <button type="submit" class="btn btn-primary material-box">@lang('question.search')</button>
                   </div>
                 </div>

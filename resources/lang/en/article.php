@@ -24,5 +24,12 @@ return [
 	'title' => 'Title',
 	'add_article' => 'Add New Article',
 	'edit_article' => 'Edit Article',
+	'all_categories' => 'All Categories',
+	'all_articles' => 'All Articles',
+	'status' => [
+		'pending' => 'Pending Articles',
+		'approved' => 'Approved Articles',
+		'rejected' => 'Rejected Articles',
+	],
 
 ];

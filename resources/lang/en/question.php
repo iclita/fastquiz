@@ -29,5 +29,12 @@ return [
 	'add_question' => 'Add New Question',
 	'edit_question' => 'Edit Question',
 	'no_choice' => 'You need to select one correct choice',
+	'all_categories' => 'All Categories',
+	'all_questions' => 'All Questions',
+	'status' => [
+		'pending' => 'Pending Questions',
+		'approved' => 'Approved Questions',
+		'rejected' => 'Rejected Questions',
+	],
 
 ];

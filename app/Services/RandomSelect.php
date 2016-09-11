@@ -28,7 +28,7 @@ trait RandomSelect {
     	$data = DB::select(
 						"SELECT t1.id FROM $table AS t1 
 						JOIN (SELECT (RAND() * (SELECT MAX(id) FROM $table)) AS id) AS t2
-						WHERE t1.id >= t2.id - $limit
+						WHERE t1.status = 'approved' AND t1.id >= t2.id - $limit
 						ORDER BY t1.id ASC
 						LIMIT $limit"
 					);

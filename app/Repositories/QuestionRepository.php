@@ -52,14 +52,30 @@ class QuestionRepository {
 		}else{
 			// If the user did not select a specific category it means we must search through all categories
 			if (empty($query['category'])) {
-				$questions = Question::search($query['keywords'])->where('user_id', Auth::id())
-															      ->orderByRaw('updated_at desc, created_at desc')
-															      ->paginate(Question::ITEMS_PER_PAGE);
+				// If no status filtering has been applied search through all questions
+				if (empty($query['status'])) {				
+					$questions = Question::search($query['keywords'])->where('user_id', Auth::id())
+																      ->orderByRaw('updated_at desc, created_at desc')
+																      ->paginate(Question::ITEMS_PER_PAGE);
+				}else{
+					$questions = Question::search($query['keywords'])->where('user_id', Auth::id())
+																	 ->where('status', $query['status'])
+																     ->orderByRaw('updated_at desc, created_at desc')
+																     ->paginate(Question::ITEMS_PER_PAGE);					
+				}
 			}else{
-				$questions = Question::search($query['keywords'])->where('user_id', Auth::id())
-															     ->where('category_id', $query['category'])
-															     ->orderByRaw('updated_at desc, created_at desc')
-															     ->paginate(Question::ITEMS_PER_PAGE);				
+				if (empty($query['status'])) {				
+					$questions = Question::search($query['keywords'])->where('user_id', Auth::id())
+																     ->where('category_id', $query['category'])
+																     ->orderByRaw('updated_at desc, created_at desc')
+																     ->paginate(Question::ITEMS_PER_PAGE);				
+				}else{
+					$questions = Question::search($query['keywords'])->where('user_id', Auth::id())
+																     ->where('category_id', $query['category'])
+																     ->where('status', $query['status'])
+																     ->orderByRaw('updated_at desc, created_at desc')
+																     ->paginate(Question::ITEMS_PER_PAGE);						
+				}
 			}
 		}
 

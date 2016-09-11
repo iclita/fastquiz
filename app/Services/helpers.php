@@ -108,6 +108,11 @@ if ( ! function_exists('getSearchParams'))
         	return [];
         }
 
-        return ['search' => 'true', 'keywords' => $request->input('keywords'), 'category' => $request->input('category')];
+        return [
+        	'search' => 'true', 
+        	'keywords' => $request->input('keywords'), 
+        	'category' => $request->input('category'), 
+        	'status' => $request->input('status')
+        ];
     }
 }

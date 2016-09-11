@@ -17,6 +17,8 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->bigInteger('facebook_id')->nullable()->unsigned()->index();
             $table->rememberToken();
+            $table->integer('score')->default(0);
+            $table->string('type')->default('user');
             $table->timestamps();
         });
     }
