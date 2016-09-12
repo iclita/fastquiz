@@ -38,13 +38,19 @@
     </div><!--/.preloader-->
     <header id="navigation"> 
         <div class="navbar navbar-inverse navbar-fixed-top" role="banner"> 
-            <div class="container"> 
+            <div class="container">
+
+                @if (Auth::check() && Auth::user()->isAdmin())
+                <h2 style="float:left;">ADMIN ZONE</h2>
+                @else
                 <div class="navbar-header"> 
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> 
                         <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> 
                     </button> 
                     <a class="navbar-brand" href="/"><h1><img src="/images/logo.png" alt="logo"></h1></a> 
                 </div> 
+                @endif 
+
                 <div class="collapse navbar-collapse">
 
                     <ul class="nav navbar-nav navbar-right"> 

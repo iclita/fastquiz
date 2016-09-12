@@ -13,7 +13,7 @@
               <div class="panel-heading clearfix">
                 <h3 class="panel-title pull-left">@lang('article.edit_article')</h3>
                 <div class="btn-group pull-right">
-                  <a class="btn btn-danger material-box" href="{{ route('articles') }}">
+                  <a class="btn btn-danger material-box" href="{{ Auth::user()->isAdmin() ? route('admin.get.articles') : route('articles') }}">
                     <i class="fa fa-times"></i>
                     @lang('article.cancel')
                   </a>

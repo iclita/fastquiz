@@ -1,7 +1,7 @@
-<div class="dropdown profile">
+<div style="margin-top:0;" class="dropdown profile">
     <a class="logout material-box" id="avatar-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;Admin<span class="caret"></span>
     </a>
-    <ul class="dropdown-menu material-box" aria-labelledby="avatar-dropdown">
+    <ul style="margin-top:15px;" class="dropdown-menu material-box" aria-labelledby="avatar-dropdown">
         <li class="scroll">
             <a class="logout" href="{{ route('admin.get.dashboard') }}">
                 <i class="fa fa-tachometer" aria-hidden="true"></i>&nbsp;Dashboard

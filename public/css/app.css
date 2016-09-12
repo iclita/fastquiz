@@ -16747,4 +16747,8 @@ select.form-control {
 	padding: 2px !important;
 }*/
 
+.underline:hover {
+	text-decoration: underline;
+}
+
 /*# sourceMappingURL=app.css.map */
