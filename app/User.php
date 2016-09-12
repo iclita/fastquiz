@@ -46,6 +46,17 @@ class User extends Authenticatable
     }
 
     /**
+     * Find a user by name.
+     *
+     * @param string $name
+     * @return App\User
+     */
+    public static function findByName($name)
+    {
+        return static::where('name', $name)->first();
+    }
+
+    /**
      * Get the Facebook User profile link.
      *
      * @return string

@@ -75,8 +75,6 @@ class QuestionController extends Controller
      */
     public function edit(Request $request, $id)
     {
-    	$id = (int) $id;
-
     	$question = $this->repository->find($id);
 
     	return view('questions.edit', compact('question'));
@@ -103,7 +101,7 @@ class QuestionController extends Controller
      */
     public function delete(Request $request)
     {
-    	$id = (int) $request->input('id');
+    	$id = $request->input('id');
 
     	$question = $this->repository->find($id);
 

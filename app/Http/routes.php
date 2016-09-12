@@ -47,5 +47,9 @@ Route::group(['prefix' => env('ADMIN_ROUTE')], function () {
     Route::get('logout', 'AdminController@getLogout')->name('admin.get.logout');
     // Dashboard
     Route::get('dashboard', 'AdminController@dashboard')->name('admin.get.dashboard');
+    // Articles
+    Route::get('articles', 'AdminController@getArticles')->name('admin.get.articles');
+    Route::get('article-status/{id}', 'AdminController@changeArticleStatus')->name('admin.article.status');
+    Route::get('questions', 'AdminController@getQuestions')->name('admin.get.questions');
 });
 

@@ -150,6 +150,9 @@ class QuestionRepository {
 
 		$question = $this->find($id);
 
+		// We put the question in pending state to revalidate it 
+		$data['status'] = 'pending';
+
 		$question->update($data);
 	}
 

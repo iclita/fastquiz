@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\ArticleRequest;
 use App\Repositories\ArticleRepository;
+use Auth;
 
 class ArticleController extends Controller
 {
@@ -27,6 +28,20 @@ class ArticleController extends Controller
 
 		$this->repository = $repository;
 	}
+
+    /**
+     * This method gets the correct redirect route after updating/deleting an article.
+     *
+     * @return string
+     */
+    private function getProperRedirectRoute()
+    {
+        if (Auth::user()->isAdmin()) {
+            return 'admin.get.articles';
+        } 
+
+        return 'articles';
+    }
 
     /**
      * Fetch all the Articles and show them to the authenticated User.
@@ -75,8 +90,6 @@ class ArticleController extends Controller
      */
     public function edit(Request $request, $id)
     {
-    	$id = (int) $id;
-
     	$article = $this->repository->find($id);
 
     	return view('articles.edit', compact('article'));
@@ -92,7 +105,7 @@ class ArticleController extends Controller
     {
     	$this->repository->update($request, $id);
         
-        return redirect()->route('articles')->with('success', 'Article succesfully updated');
+        return redirect()->route($this->getProperRedirectRoute())->with('success', 'Article succesfully updated');
     }
 
     /**
@@ -103,13 +116,13 @@ class ArticleController extends Controller
      */
     public function delete(Request $request)
     {
-    	$id = (int) $request->input('id');
+    	$id = $request->input('id');
 
     	$article = $this->repository->find($id);
 
     	$article->delete();
         
-        return redirect()->route('articles')->with('success', 'Article succesfully deleted');
+        return redirect()->route($this->getProperRedirectRoute())->with('success', 'Article succesfully deleted');
     }
 
 }

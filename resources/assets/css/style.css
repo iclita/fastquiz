@@ -1811,3 +1811,15 @@ select.form-control {
 .status-pending {
 	color: #286090;
 }
+
+.change-status {
+	position: absolute;
+    z-index: 999;
+    top: 9%;
+    right: 2%;
+}
+
+/*.change-status > a.btn {
+	font-size: 13px !important;
+	padding: 2px !important;
+}*/

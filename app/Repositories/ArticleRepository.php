@@ -23,7 +23,7 @@ class ArticleRepository {
 	 *
 	 * @return void
 	 */
-	private function checkUser()
+	private function isAuthorized()
 	{
 		if (Auth::guest()) {
 			throw new \Exception('Unauthorized acces here!');
@@ -36,12 +36,8 @@ class ArticleRepository {
 	 * @param array $query // array with query string search params
 	 * @return Illuminate\Database\Eloquent\Collection
 	 */
-	public function all(array $query)
+	private function allForUser(array $query)
 	{
-		// This is superfluous because of the middleware.
-		// But another security check does no harm. :)
-		$this->checkUser();
-
 		if (count($query) === 0) {		
 			// Get all the Articles belonging to the current User
 			$articles = Auth::user()->articles()
@@ -84,8 +80,103 @@ class ArticleRepository {
 	}
 
 	/**
+	 * Get the all the Articles. ADMIN ONLY!!!
+	 *
+	 * @param array $query // array with query string search params
+	 * @return Illuminate\Database\Eloquent\Collection
+	 */
+	private function allForAdmin(array $query)
+	{
+		if (count($query) === 0) {		
+			// Get all the Articles
+			$articles = Article::orderByRaw('updated_at desc, created_at desc')->paginate(Article::ITEMS_PER_PAGE);
+		}else{
+			// If the user did not select a specific category it means we must search through all categories
+			if (empty($query['category'])) {
+				// If no status filtering has been applied search through all articles
+				if (empty($query['status'])) {
+					$articles = Article::search($query['keywords'])->orderByRaw('updated_at desc, created_at desc')
+																   ->paginate(Article::ITEMS_PER_PAGE);
+				}else{
+					$articles = Article::search($query['keywords'])->where('status', $query['status'])
+																   ->orderByRaw('updated_at desc, created_at desc')
+																   ->paginate(Article::ITEMS_PER_PAGE);					
+				}
+			}else{
+				if (empty($query['status'])) {				
+					$articles = Article::search($query['keywords'])->where('category_id', $query['category'])
+																   ->orderByRaw('updated_at desc, created_at desc')
+																   ->paginate(Article::ITEMS_PER_PAGE);				
+				}else{
+					$articles = Article::search($query['keywords'])->where('category_id', $query['category'])
+																   ->where('status', $query['status'])
+																   ->orderByRaw('updated_at desc, created_at desc')
+																   ->paginate(Article::ITEMS_PER_PAGE);						
+				}
+			}
+		}
+
+		// Eager load all the relations
+		$articles->load('category', 'user');
+
+		return $articles;
+	}
+
+	/**
+	 * Get the all the Articles depending on the context (normal User vs Admin).
+	 *
+	 * @param array $query // array with query string search params
+	 * @return Illuminate\Database\Eloquent\Collection
+	 */
+	public function all(array $query)
+	{
+		// This is superfluous because of the middleware.
+		// But another security check does no harm. :)
+		$this->isAuthorized();
+
+		if (Auth::user()->isAdmin()) {
+			return $this->allForAdmin($query);
+		}
+
+		return $this->allForUser($query);
+	}
+
+	/**
 	 * Get the Article model with the given id.
-	 * Practically get the Article with the given id.
+	 * Practically get the Article with the given id for the normal User.
+	 *
+	 * @param int $id
+	 * @return App\Article
+	 */
+	private function findForUser($id)
+	{	
+		// Get the Article belonging to the current User with a given $id
+		$article = Auth::user()->articles()->findOrFail($id);
+		// Eager load all the relations
+		$article->load('category', 'user');
+
+		return $article;
+	}
+
+	/**
+	 * Get the Article model with the given id.
+	 * Practically get the Article with the given id for the normal Admin.
+	 *
+	 * @param int $id
+	 * @return App\Article
+	 */
+	private function findForAdmin($id)
+	{	
+		// Get the Article belonging to the current User with a given $id
+		$article = Article::findOrFail($id);
+		// Eager load all the relations
+		$article->load('category', 'user');
+
+		return $article;
+	}
+
+	/**
+	 * Get the Article with the given id depending on the context (normal User vs Admin).
 	 *
 	 * @param int $id
 	 * @return App\Article
@@ -94,14 +185,13 @@ class ArticleRepository {
 	{
 		// This is superfluous because of the middleware.
 		// But another security check does no harm. :)
-		$this->checkUser();
-		
-		// Get the Article belonging to the current User with a given $id
-		$article = Auth::user()->articles()->findOrFail($id);
-		// Eager load all the relations
-		$article->load('category', 'user');
+		$this->isAuthorized();
 
-		return $article;
+		if (Auth::user()->isAdmin()) {
+			return $this->findForAdmin($id);
+		}
+
+		return $this->findForUser($id);
 	}
 
 	/**
@@ -114,7 +204,7 @@ class ArticleRepository {
 	{
 		// This is superfluous because of the middleware.
 		// But another security check does no harm. :)
-		$this->checkUser();
+		$this->isAuthorized();
 
 		$data = $request->except(['category', 'status']);
 		// The form sends the category field and we translate it to category_id
@@ -139,7 +229,7 @@ class ArticleRepository {
 	{
 		// This is superfluous because of the middleware.
 		// But another security check does no harm. :)
-		$this->checkUser();
+		$this->isAuthorized();
 
 		$data = $request->except(['category', 'status']);
 		// The form sends the category field and we translate it to category_id
@@ -149,6 +239,8 @@ class ArticleRepository {
 		$id = (int) $id;
 
 		$article = $this->find($id);
+		// We put the article in pending state to revalidate it 
+		$data['status'] = 'pending';
 
 		$article->update($data);
 	}
