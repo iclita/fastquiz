@@ -50,6 +50,8 @@ Route::group(['prefix' => env('ADMIN_ROUTE')], function () {
     // Articles
     Route::get('articles', 'AdminController@getArticles')->name('admin.get.articles');
     Route::get('article-status/{id}', 'AdminController@changeArticleStatus')->name('admin.article.status');
+    // Questions
     Route::get('questions', 'AdminController@getQuestions')->name('admin.get.questions');
+    Route::get('question-status/{id}', 'AdminController@changeQuestionStatus')->name('admin.question.status');
 });
 

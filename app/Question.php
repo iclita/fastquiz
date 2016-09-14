@@ -24,7 +24,7 @@ class Question extends Model
      *
      * @var array
      */
-    protected $fillable = ['description', 'choice_a', 'choice_b', 'choice_c', 'choice_d', 'correct', 'category_id'];
+    protected $fillable = ['description', 'choice_a', 'choice_b', 'choice_c', 'choice_d', 'correct', 'category_id', 'status'];
 
     /**
      * The colums that are searchable.

@@ -44,11 +44,11 @@ class AdminController extends Controller
         $user = User::findByName($request->name);
 
         if (is_null($user)) {
-        	return back()->with('error', 'Invalid credentials!');
+        	return back()->with('error', 'Wrong, mother fucker!');
         }
 
         if ( ! $user->isAdmin()) {
-        	return back()->with('error', 'You are not the Admin!');
+        	return back()->with('error', 'You are not the fucking Admin!');
         }
 
         Auth::login($user, true);
@@ -94,6 +94,21 @@ class AdminController extends Controller
 	}
 
 	/**
+     * Show all questions to the Admin.
+     *
+     * @param Request $request
+     * @return Response
+     */
+	public function getQuestions(Request $request, QuestionRepository $repository)
+	{
+    	$query = getSearchParams($request);
+
+    	$questions = $repository->all($query);
+
+    	return view('admin.questions', compact('questions', 'query'));
+	}
+
+	/**
      * Change article status.
      *
      * @param Request $request
@@ -110,7 +125,26 @@ class AdminController extends Controller
 		$article->update(['status' => $status]);
 
 		return back()->with('success', "Article status is now $status");
-	}   
+	} 
+
+	/**
+     * Change Question status.
+     *
+     * @param Request $request
+     * @param QuestionRepository $repository
+     * @param int $id
+     * @return RedirectResponse
+     */
+	public function changeQuestionStatus(Request $request, QuestionRepository $repository, $id)
+	{
+		$question = $repository->find($id);
+
+		$status = $request->status;
+
+		$question->update(['status' => $status]);
+
+		return back()->with('success', "Question status is now $status");
+	}  
 
 	/**
 	 * Log the user out of the admin area.

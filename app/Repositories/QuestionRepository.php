@@ -23,7 +23,7 @@ class QuestionRepository {
 	 *
 	 * @return void
 	 */
-	private function checkUser()
+	private function isAuthorized()
 	{
 		if (Auth::guest()) {
 			throw new \Exception('Unauthorized acces here!');
@@ -36,12 +36,8 @@ class QuestionRepository {
 	 * @param array $query // array with query string search params
 	 * @return Illuminate\Database\Eloquent\Collection
 	 */
-	public function all(array $query)
+	private function allForUser(array $query)
 	{
-		// This is superfluous because of the middleware.
-		// But another security check does no harm. :)
-		$this->checkUser();
-
 		if (count($query) === 0) {		
 			// Get all the Questions belonging to the current User
 			$questions = Auth::user()->questions()
@@ -50,14 +46,14 @@ class QuestionRepository {
 		}else{
 			// If the user did not select a specific category it means we must search through all categories
 			if (empty($query['category'])) {
-				// If no status filtering has been applied search through all questions
-				if (empty($query['status'])) {				
+				// If no status filtering has been applied search through all Questions
+				if (empty($query['status'])) {
 					$questions = Question::search($query['keywords'])->where('user_id', Auth::id())
-																      ->orderByRaw('updated_at desc, created_at desc')
-																      ->paginate(Question::ITEMS_PER_PAGE);
+																     ->orderByRaw('updated_at desc, created_at desc')
+																     ->paginate(Question::ITEMS_PER_PAGE);
 				}else{
 					$questions = Question::search($query['keywords'])->where('user_id', Auth::id())
-																	 ->where('status', $query['status'])
+																     ->where('status', $query['status'])
 																     ->orderByRaw('updated_at desc, created_at desc')
 																     ->paginate(Question::ITEMS_PER_PAGE);					
 				}
@@ -84,8 +80,103 @@ class QuestionRepository {
 	}
 
 	/**
+	 * Get the all the Questions. ADMIN ONLY!!!
+	 *
+	 * @param array $query // array with query string search params
+	 * @return Illuminate\Database\Eloquent\Collection
+	 */
+	private function allForAdmin(array $query)
+	{
+		if (count($query) === 0) {		
+			// Get all the Questions
+			$questions = Question::orderByRaw('updated_at desc, created_at desc')->paginate(Question::ITEMS_PER_PAGE);
+		}else{
+			// If the user did not select a specific category it means we must search through all categories
+			if (empty($query['category'])) {
+				// If no status filtering has been applied search through all Questions
+				if (empty($query['status'])) {
+					$questions = Question::search($query['keywords'])->orderByRaw('updated_at desc, created_at desc')
+																     ->paginate(Question::ITEMS_PER_PAGE);
+				}else{
+					$questions = Question::search($query['keywords'])->where('status', $query['status'])
+																     ->orderByRaw('updated_at desc, created_at desc')
+																     ->paginate(Question::ITEMS_PER_PAGE);					
+				}
+			}else{
+				if (empty($query['status'])) {				
+					$questions = Question::search($query['keywords'])->where('category_id', $query['category'])
+																     ->orderByRaw('updated_at desc, created_at desc')
+																     ->paginate(Question::ITEMS_PER_PAGE);				
+				}else{
+					$questions = Question::search($query['keywords'])->where('category_id', $query['category'])
+																     ->where('status', $query['status'])
+																     ->orderByRaw('updated_at desc, created_at desc')
+																     ->paginate(Question::ITEMS_PER_PAGE);						
+				}
+			}
+		}
+
+		// Eager load all the relations
+		$questions->load('category', 'user');
+
+		return $questions;
+	}
+
+	/**
+	 * Get the all the Questions depending on the context (normal User vs Admin).
+	 *
+	 * @param array $query // array with query string search params
+	 * @return Illuminate\Database\Eloquent\Collection
+	 */
+	public function all(array $query)
+	{
+		// This is superfluous because of the middleware.
+		// But another security check does no harm. :)
+		$this->isAuthorized();
+
+		if (Auth::user()->isAdmin()) {
+			return $this->allForAdmin($query);
+		}
+
+		return $this->allForUser($query);
+	}
+
+	/**
 	 * Get the Question model with the given id.
-	 * Practically get the Question with the given id.
+	 * Practically get the Question with the given id for the normal User.
+	 *
+	 * @param int $id
+	 * @return App\Question
+	 */
+	private function findForUser($id)
+	{	
+		// Get the Question belonging to the current User with a given $id
+		$question = Auth::user()->questions()->findOrFail($id);
+		// Eager load all the relations
+		$question->load('category', 'user');
+
+		return $question;
+	}
+
+	/**
+	 * Get the Question model with the given id.
+	 * Practically get the Question with the given id for the normal Admin.
+	 *
+	 * @param int $id
+	 * @return App\Question
+	 */
+	private function findForAdmin($id)
+	{	
+		// Get the Question belonging to the current User with a given $id
+		$question = Question::findOrFail($id);
+		// Eager load all the relations
+		$question->load('category', 'user');
+
+		return $question;
+	}
+
+	/**
+	 * Get the Question with the given id depending on the context (normal User vs Admin).
 	 *
 	 * @param int $id
 	 * @return App\Question
@@ -94,14 +185,13 @@ class QuestionRepository {
 	{
 		// This is superfluous because of the middleware.
 		// But another security check does no harm. :)
-		$this->checkUser();
-		
-		// Get the Question belonging to the current User with a given $id
-		$question = Auth::user()->questions()->findOrFail($id);
-		// Eager load all the relations
-		$question->load('category', 'user');
+		$this->isAuthorized();
 
-		return $question;
+		if (Auth::user()->isAdmin()) {
+			return $this->findForAdmin($id);
+		}
+
+		return $this->findForUser($id);
 	}
 
 	/**
@@ -114,9 +204,9 @@ class QuestionRepository {
 	{
 		// This is superfluous because of the middleware.
 		// But another security check does no harm. :)
-		$this->checkUser();
+		$this->isAuthorized();
 
-		$data = $request->except('category');
+		$data = $request->except(['category', 'status']);
 		// The form sends the category field and we translate it to category_id
 		// This is done because we need to insert category_id into the DB but keep category in the form for proper validation messages
 		$data['category_id'] = (int) $request->input('category');
@@ -139,9 +229,9 @@ class QuestionRepository {
 	{
 		// This is superfluous because of the middleware.
 		// But another security check does no harm. :)
-		$this->checkUser();
+		$this->isAuthorized();
 
-		$data = $request->except('category');
+		$data = $request->except(['category', 'status']);
 		// The form sends the category field and we translate it to category_id
 		// This is done because we need to insert category_id into the DB but keep category in the form for proper validation messages
 		$data['category_id'] = (int) $request->input('category');
@@ -149,8 +239,7 @@ class QuestionRepository {
 		$id = (int) $id;
 
 		$question = $this->find($id);
-
-		// We put the question in pending state to revalidate it 
+		// We put the Question in pending state to revalidate it 
 		$data['status'] = 'pending';
 
 		$question->update($data);

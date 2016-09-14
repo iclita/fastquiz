@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use Illuminate\Http\Request;
+use App\Services\Redirector;
 use App\Http\Requests\QuestionRequest;
 use App\Repositories\QuestionRepository;
 
 class QuestionController extends Controller
 {
+    use Redirector;
+
 	/**
 	 * The Question repository instance .
 	 *
@@ -27,6 +31,20 @@ class QuestionController extends Controller
 
 		$this->repository = $repository;
 	}
+
+    /**
+     * This method gets the correct redirect route after updating/deleting a question.
+     *
+     * @return string
+     */
+    private function getProperRedirectRoute()
+    {
+        if (Auth::user()->isAdmin()) {
+            return 'admin.get.questions';
+        } 
+
+        return 'questions';
+    }
 
     /**
      * Fetch all the Qustions and show them to the authenticated User.
@@ -90,7 +108,7 @@ class QuestionController extends Controller
     {
     	$this->repository->update($request, $id);
         
-        return redirect()->route('questions')->with('success', 'Question succesfully updated');
+        return redirect()->route($this->getProperRedirectRoute('questions'))->with('success', 'Question succesfully updated');
     }
 
     /**
@@ -107,7 +125,7 @@ class QuestionController extends Controller
 
     	$question->delete();
         
-        return redirect()->route('questions')->with('success', 'Question succesfully deleted');
+        return redirect()->route($this->getProperRedirectRoute('questions'))->with('success', 'Question succesfully deleted');
     }
 
 }

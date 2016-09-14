@@ -13,7 +13,7 @@
               <div class="panel-heading clearfix">
                 <h3 class="panel-title pull-left">@lang('question.edit_question')</h3>
                 <div class="btn-group pull-right">
-                  <a class="btn btn-danger material-box" href="{{ route('questions') }}">
+                  <a class="btn btn-danger material-box" href="{{ Auth::user()->isAdmin() ? route('admin.get.questions') : route('questions') }}">
                     <i class="fa fa-times"></i>
                     @lang('question.cancel')
                   </a>
