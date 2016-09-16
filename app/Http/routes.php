@@ -39,6 +39,10 @@ Route::group(['prefix' => 'questions'], function () {
 	Route::get('/', 'QuestionController@index')->name('questions');
 });
 
+//Gameplay
+Route::get('play', 'GameController@play')->name('play');
+Route::post('answer', 'GameController@answer')->name('answer');
+
 // Admin area (Security measures need to be taken)
 Route::group(['prefix' => env('ADMIN_ROUTE')], function () {
     // Auth

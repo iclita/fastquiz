@@ -145,7 +145,7 @@
           @if (request()->has('search'))
           <div class="no-results">          
             <h2>@lang('question.no_match')</h2>
-            <h2>{!! trans('question.try_again', ['url' => route('questions')]) !!}</h2>
+            <h2>{!! trans('question.try_again', ['url' => route('admin.get.questions')]) !!}</h2>
           </div>
           @else
           <div class="col-md-8 col-md-offset-2 first-item-panel">

@@ -52,6 +52,23 @@ class Question extends Model
     }
 
 	/**
+	 * Get all the available choices.
+	 *
+	 * @return array
+	 */
+    public function getChoices()
+    {
+    	$choices = ['a' => $this->choice_a, 
+    				'b' => $this->choice_b, 
+    				'c' => $this->choice_c, 
+    				'd' => $this->choice_d];
+
+    	shuffle_assoc($choices);
+
+    	return $choices;
+    }
+
+	/**
 	 * Get the correct answer for this Question.
 	 *
 	 * @return string
@@ -61,6 +78,16 @@ class Question extends Model
     	$choice = 'choice_' . $this->correct;
 
     	return $this->{$choice};
+    }
+
+	/**
+	 * Get a temporary alias for this Question.
+	 *
+	 * @return string
+	 */
+    public function getTemporaryAlias()
+    {
+    	return uniqid(true) . $this->id . str_random(10);
     }
 
 	/**

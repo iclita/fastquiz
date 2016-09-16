@@ -19,7 +19,7 @@
                             <span class="fa fa-facebook"></span> <span class="fb-text">@lang('home.sign_in')</span>
                         </a>
                         @else
-                        <a class="btn btn-default slider-btn animated fadeIn play-now material-box" href="{{ route('login') }}">
+                        <a class="btn btn-default slider-btn animated fadeIn play-now material-box" href="{{ route('play') }}">
                             <i class="fa fa-play-circle" aria-hidden="true"></i>&nbsp;@lang('home.play')
                         </a>
                         @endif 

@@ -40,4 +40,8 @@ elixir(function(mix) {
     	'script.js',
     ], 'public/js/app.js');
 
+    mix.scripts([
+        'gameplay.js',
+    ], 'public/js/gameplay.js');
+
 });

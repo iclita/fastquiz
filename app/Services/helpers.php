@@ -89,7 +89,10 @@ if ( ! function_exists('categories'))
 	 */
     function categories()
     {
-        return \DB::table('categories')->orderBy('name', 'asc')->pluck('name', 'id');
+    	$categories = trans('categories');
+    	asort($categories);
+
+    	return $categories;
     }
 }
 
@@ -114,5 +117,28 @@ if ( ! function_exists('getSearchParams'))
         	'category' => $request->input('category'), 
         	'status' => $request->input('status')
         ];
+    }
+}
+
+if ( ! function_exists('shuffle_assoc'))
+{
+	/**
+	 * Shuffle an array but preserve keys.
+	 *
+	 * @param Illuminate\Http\Request $request
+	 * @return array
+	 */
+    function shuffle_assoc(&$array) {
+        $keys = array_keys($array);
+
+        shuffle($keys);
+
+        foreach($keys as $key) {
+            $new[$key] = $array[$key];
+        }
+
+        $array = $new;
+
+        return true;
     }
 }

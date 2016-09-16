@@ -1827,3 +1827,27 @@ select.form-control {
 .underline:hover {
 	text-decoration: underline;
 }
+
+.play-description {
+	text-align: center;
+}
+
+.play-choice {
+	width: 90%;
+	margin: 0 auto;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.counter-bar {
+	background-color: #fc7700;
+}
+
+#answer-checker {
+	display: none;
+	margin-top: 5px;
+}
+
+#alias {
+	display: none;
+}

@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use DB;
 
 class User extends Authenticatable
 {   
@@ -84,6 +85,26 @@ class User extends Authenticatable
     public function isAdmin()
     {
         return $this->type === 'admin';
+    }
+
+    /**
+     * Add another $points points to $this User.
+     *
+     * @return void
+     */
+    public function addPoints($points)
+    {
+        DB::table($this->table)->where('id', $this->id)->increment('score', $points);
+    }
+
+    /**
+     * Remove another $points points to $this User.
+     *
+     * @return void
+     */
+    public function removePoints($points)
+    {
+        DB::table($this->table)->where('id', $this->id)->decrement('score', $points);
     }
 
     /**

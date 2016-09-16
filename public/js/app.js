@@ -555,6 +555,12 @@ if (window.location.hash == '#_=_'){
 // Custom JS code
 $(document).ready(function(){
 
+	$.ajaxSetup({
+	    headers: {
+	        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+	    }
+	});
+
 	$('[data-toggle="tooltip"]').tooltip()
 
 	$('.item-save').off('click').on('click', function(){

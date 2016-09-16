@@ -2,10 +2,11 @@
 <html lang="en">
 <head> 
     <meta charset="utf-8"> 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    <meta name="description" content="Creative One Page Parallax Template">
-    <meta name="keywords" content="Creative, Onepage, Parallax, HTML5, Bootstrap, Popular, custom, personal, portfolio" /> 
-    <meta name="author" content=""> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+    <meta name="description" content="Test your knowledge speed" />
+    <meta name="keywords" content="quiz, question, article, general knowledge" /> 
+    <meta name="author" content="FastQuiz" /> 
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <title>@yield('title')</title> 
 
     <!-- GOOGLE FONTS -->
@@ -117,7 +118,9 @@
 
     @yield('modal')
 
-    <script type="text/javascript" src="{{ cached_asset('js/app.js') }}"></script> 
+    <script type="text/javascript" src="{{ cached_asset('js/app.js') }}"></script>
+
+    @stack('scripts')
 
 </body>
 </html>

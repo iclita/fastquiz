@@ -30,5 +30,7 @@ return [
 		'approved' => 'Your :item has been approved',
 		'rejected' => 'Your :item has been rejected',
 	],
+	'game' => 'Play Game',
+	'next' => 'Next',
 
 ];

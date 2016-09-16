@@ -10,7 +10,8 @@
         "laravel/socialite": "^2.0",
         "laravelcollective/html": "^5.2",
         "sofa/eloquence": "5.2.*",
-        "anhskohbo/no-captcha": "^2.1"
+        "anhskohbo/no-captcha": "^2.1",
+        "predis/predis": "^1.1"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

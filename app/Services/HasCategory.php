@@ -20,7 +20,7 @@ trait HasCategory {
 	 */
     public function getCategoryName()
     {
-    	return $this->category->name;
+    	return trans('categories')[$this->category->id];
     }
 
 	/**
