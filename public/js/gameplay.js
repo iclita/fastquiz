@@ -2,9 +2,11 @@ $(document).ready(function(){
 
     $('.play-choice').off('click').on('click', function(){
 
+        var $button = $(this);
+
         $('#answer-checker').show();
 
-        var formData = 'alias=' + $('#alias').html() + '&choice=' + $(this).data('choice');
+        var formData = 'alias=' + $('#alias').html() + '&choice=' + $button.data('choice');
 
         $.ajax({
           type: 'POST',
@@ -12,15 +14,20 @@ $(document).ready(function(){
           data: formData,
 
           success: function(data) {
+
             var response = JSON.parse(data);
 
+            $('.play-choice').attr('disabled', 'disabled');
+
             if (response.correct) {
+                $button.removeClass('btn-primary');
+                $button.addClass('btn-success');
                 $('#answer-checker').html('<i style="color:#449D44;" class="fa fa-check fa-2x"></i>');
             }else{
+                $button.removeClass('btn-primary');
+                $button.addClass('btn-danger');
                 $('#answer-checker').html('<i style="color:#C9302C;" class="fa fa-times fa-2x"></i>');
             }
-
-            $('.play-choice').attr('disabled', 'disabled');
 
             setTimeout(function(){
                 window.location.reload();
