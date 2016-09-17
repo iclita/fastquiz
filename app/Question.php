@@ -5,12 +5,12 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Sofa\Eloquence\Eloquence;
 use App\Services\HasCategory;
-use App\Services\RandomSelect;
 use App\Services\CheckStatus;
+use DB;
 
 class Question extends Model
 {
-    use Eloquence, HasCategory, RandomSelect, CheckStatus;
+    use Eloquence, HasCategory, CheckStatus;
 	
 	/**
 	 * The database table used by the model.
@@ -88,6 +88,30 @@ class Question extends Model
     public function getTemporaryAlias()
     {
     	return uniqid(true) . $this->id . str_random(10);
+    }
+
+	/**
+	 * Select a random question
+	 *
+	 * @return App\Qustion
+	 */
+    public static function random()
+    {
+    	$table = (new static)->getTable();
+
+    	$data = collect(
+    				DB::select(
+						"SELECT t1.id FROM $table AS t1 
+						JOIN (SELECT (RAND() * (SELECT MAX(id) FROM $table)) AS id) AS t2
+						WHERE t1.status = 'approved' AND t1.id >= t2.id
+						ORDER BY t1.id ASC
+						LIMIT 1"
+					)
+    			);
+
+    	$id = $data->pluck('id')->first();
+
+    	return static::findOrFail($id); 
     }
 
 	/**

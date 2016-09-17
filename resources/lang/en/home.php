@@ -4,6 +4,7 @@ return [
 
 	'menu' => [
 		'home' => 'Home',
+		'play' => 'Play Now',
 		'how_it_works' => 'How it works',
 		'brain_food' => 'Brain Food',
 		'language' => 'Language',
@@ -26,9 +27,9 @@ return [
     	'question' => 'question',
     ],
     'status' => [
-		'pending' => 'Your :item is pending approval',
-		'approved' => 'Your :item has been approved',
-		'rejected' => 'Your :item has been rejected',
+		'pending' => 'This :item is pending approval',
+		'approved' => 'This :item has been approved',
+		'rejected' => 'This :item has been rejected',
 	],
 	'game' => 'Play Game',
 	'next' => 'Next',

@@ -114,7 +114,11 @@
             <small>FastQuiz - @lang('home.motto')</small>
           </div>
         </div>
-
+        <div style="text-align:center;">
+          <a class="btn btn-default slider-btn animated fadeIn play-now material-box" href="{{ route('play') }}">
+            <i class="fa fa-play-circle" aria-hidden="true"></i>&nbsp;@lang('home.play')
+          </a>
+        </div>
         </div>
         @else
           {{-- If we dont't have search results --}}

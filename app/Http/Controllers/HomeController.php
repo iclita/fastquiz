@@ -27,7 +27,7 @@ class HomeController extends Controller
      */
     public function home()
     {
-        $articles = Article::random(8);
+        $articles = Article::latest()->take(8)->get();
 
         $articles->load('user');
 

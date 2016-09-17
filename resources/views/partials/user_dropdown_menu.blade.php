@@ -9,8 +9,8 @@
             </a>
         </li>
         <li class="scroll">
-            <a class="logout" href="{{ Auth::user()->getProfile() }}" target="_blank">
-                <i class="fa fa-user" aria-hidden="true"></i>&nbsp;@lang('home.menu.profile')
+            <a class="logout" href="{{ route('play') }}">
+                <i class="fa fa-play-circle" aria-hidden="true"></i>&nbsp;@lang('home.menu.play')
             </a>
         </li>
         <li class="scroll">

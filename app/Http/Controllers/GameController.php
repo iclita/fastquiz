@@ -28,7 +28,7 @@ class GameController extends Controller
      */
     public function play()
     {
-    	$question = Question::random()->first();
+    	$question = Question::random();
 
     	$alias = $question->getTemporaryAlias();
 

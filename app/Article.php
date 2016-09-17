@@ -5,12 +5,11 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Sofa\Eloquence\Eloquence;
 use App\Services\HasCategory;
-use App\Services\RandomSelect;
 use App\Services\CheckStatus;
 
 class Article extends Model
 {
-	use Eloquence, HasCategory, RandomSelect, CheckStatus;
+	use Eloquence, HasCategory, CheckStatus;
 	
 	/**
 	 * The database table used by the model.
