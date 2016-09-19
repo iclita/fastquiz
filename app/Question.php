@@ -24,7 +24,7 @@ class Question extends Model
      *
      * @var array
      */
-    protected $fillable = ['description', 'choice_a', 'choice_b', 'choice_c', 'choice_d', 'correct', 'category_id', 'status'];
+    protected $fillable = ['description', 'choice_a', 'choice_b', 'choice_c', 'choice_d', 'correct', 'category_id', 'status', 'score'];
 
     /**
      * The colums that are searchable.
@@ -40,6 +40,27 @@ class Question extends Model
      * @constant ITEMS_PER_PAGE int
      */
     const ITEMS_PER_PAGE = 10;
+
+	/**
+     * The number of points for a published question.
+     *
+     * @constant POINTS_PER_ITEM int
+     */
+    const POINTS_PER_ITEM = 3;
+
+	/**
+     * The number of seconds to answer a question.
+     *
+     * @constant TIME_LIMIT int
+     */
+    const TIME_LIMIT = 10;
+
+	/**
+     * The number of seconds to count for delays.
+     *
+     * @constant TIME_DELAY int
+     */
+    const TIME_DELAY = 2;
 
 	/**
 	 * Get the name of this resource.

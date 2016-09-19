@@ -122,7 +122,7 @@ class AdminController extends Controller
 
 		$status = $request->status;
 
-		$article->update(['status' => $status]);
+		$article->setStatus($status);
 
 		return back()->with('success', "Article status is now $status");
 	} 
@@ -141,7 +141,7 @@ class AdminController extends Controller
 
 		$status = $request->status;
 
-		$question->update(['status' => $status]);
+		$question->setStatus($status);
 
 		return back()->with('success', "Question status is now $status");
 	}  

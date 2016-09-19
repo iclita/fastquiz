@@ -43,4 +43,33 @@ trait CheckStatus {
     	return $this->status === 'pending';
     }
 
+	/**
+	 * Set the status for this resource and update the score accordingly.
+	 *
+	 * @param string $status
+	 * @return void
+	 */
+    public function setStatus($status)
+    {
+    	switch ($status) {
+    		case 'approved':
+    			$score = static::POINTS_PER_ITEM;
+    			break;
+    		case 'rejected':
+    			$score = -static::POINTS_PER_ITEM;
+    			break;
+    		case 'pending':
+    			$score = 0;
+    			break;
+    		default:
+    			throw new \Exception('Invalid status!');
+    			break;
+    	}
+
+    	$this->update([
+    			'status' => $status,
+    			'score' => $score
+    		]);
+    }
+
 }

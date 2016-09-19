@@ -23,7 +23,7 @@ class Article extends Model
      *
      * @var array
      */
-    protected $fillable = ['title', 'content', 'category_id', 'status'];
+    protected $fillable = ['title', 'content', 'category_id', 'status', 'score'];
 
     /**
      * The colums that are searchable.
@@ -39,6 +39,13 @@ class Article extends Model
      * @constant ITEMS_PER_PAGE int
      */
     const ITEMS_PER_PAGE = 10;
+
+	/**
+     * The number of points for a published article.
+     *
+     * @constant POINTS_PER_ITEM int
+     */
+    const POINTS_PER_ITEM = 5;
 
 	/**
 	 * Get the name of this resource.

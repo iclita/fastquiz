@@ -7,7 +7,7 @@
 @section('content')
 
 <div class="container profile-container">
-    <h2><a href="{{ route('questions') }}">All Questions</a></h2>
+    <h2><a href="{{ route('admin.get.questions') }}">All Questions</a></h2>
     <div class="row">
         @if ($questions->count() > 0)
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 bootcards-list">

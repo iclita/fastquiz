@@ -206,7 +206,7 @@ class ArticleRepository {
 		// But another security check does no harm. :)
 		$this->isAuthorized();
 
-		$data = $request->except(['category', 'status']);
+		$data = $request->except(['category', 'status', 'score']);
 		// The form sends the category field and we translate it to category_id
 		// This is done because we need to insert category_id into the DB but keep category in the form for proper validation messages
 		$data['category_id'] = (int) $request->input('category');
@@ -231,7 +231,7 @@ class ArticleRepository {
 		// But another security check does no harm. :)
 		$this->isAuthorized();
 
-		$data = $request->except(['category', 'status']);
+		$data = $request->except(['category', 'status', 'score']);
 		// The form sends the category field and we translate it to category_id
 		// This is done because we need to insert category_id into the DB but keep category in the form for proper validation messages
 		$data['category_id'] = (int) $request->input('category');

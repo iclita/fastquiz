@@ -25,6 +25,7 @@ class CreateQuestionsTable extends Migration
             $table->string('choice_d');
             $table->char('correct', 1);
             $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');
+            $table->tinyInteger('score')->default(0);  
             $table->timestamps();
         });
     }

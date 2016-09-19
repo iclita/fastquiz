@@ -108,6 +108,24 @@ class User extends Authenticatable
     }
 
     /**
+     * Get the total score for $this User.
+     *
+     * @return int
+     */
+    public function getScore()
+    {
+        $quizScore = $this->score;
+
+        $articleScore = DB::table('articles')->where('user_id', $this->id)
+                                             ->sum('score');
+
+        $questionScore = DB::table('questions')->where('user_id', $this->id)
+                                             ->sum('score');
+
+        return $quizScore + $articleScore + $questionScore;
+    }
+
+    /**
      * The User can have many Articles.
      *
      * @return Illuminate\Database\Eloquent\Relations\HasMany

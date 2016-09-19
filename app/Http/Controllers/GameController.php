@@ -59,13 +59,18 @@ class GameController extends Controller
     	$data = json_decode($data, true);
 
     	$time = Carbon::createFromTimestamp($data['time']);
+
+    	$answerTime = Carbon::now()->diffInSeconds($time);
     	// If the answer came to late
-    	if (Carbon::now()->diffInSeconds($time) >= 13) {
+    	if ($answerTime >= Question::TIME_LIMIT + Question::TIME_DELAY) {
     		return json_encode(['error' => 'To late, my brother!']);
     	}
+    	// If the answer came very quickly than convert the gained seconds into additional points
+    	$additionalPoints = ($answerTime < Question::TIME_LIMIT) ? abs(ceil(Question::TIME_LIMIT - $answerTime)) : 0;
 
     	if ($data['correct'] === $choice) {
-    		Auth::user()->addPoints(1);
+    		$points = 1 + $additionalPoints;
+    		Auth::user()->addPoints($points);
     		$correct = true;
     	}else{
     		Auth::user()->removePoints(1);

@@ -41,27 +41,15 @@
             <div class="col-sm-12">
                 <div class="our-service">
                     <div class="services row">
+                        @foreach(trans('home.steps') as $step)
                         <div class="col-sm-4">
                             <div class="single-service">
-                                <i class="fa fa-th"></i>
-                                <h2>Modern Design</h2>
-                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore.</p>
+                                {!! $step['icon'] !!}
+                                <h2>{{ $step['title'] }}</h2>
+                                <p>{{ $step['description'] }}</p>
                             </div>
                         </div>
-                        <div class="col-sm-4">
-                            <div class="single-service">
-                                <i class="fa fa-html5"></i>
-                                <h2>Web Development</h2>
-                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy </p>
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="single-service">
-                                <i class="fa fa-users"></i>
-                                <h2>Online Marketing</h2>
-                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore.</p>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
