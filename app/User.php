@@ -42,7 +42,7 @@ class User extends Authenticatable
 
         return static::create([
                 'name' => $user->getName(),
-                'email' => $user->getEmail(),
+                'email' => $user->getEmail() ?? uniqid(true).str_random(10),
                 'facebook_id' => $user->getId(),
             ]);
     }
