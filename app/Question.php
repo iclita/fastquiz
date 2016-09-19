@@ -132,7 +132,7 @@ class Question extends Model
 
     	$id = $data->pluck('id')->first();
 
-    	return static::findOrFail($id); 
+    	return static::find($id); 
     }
 
 	/**
