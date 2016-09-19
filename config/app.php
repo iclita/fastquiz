@@ -151,6 +151,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         Sofa\Eloquence\ServiceProvider::class,
         Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
+        Bugsnag\BugsnagLaravel\BugsnagServiceProvider::class,
 
         /*
          * Application Service Providers...
