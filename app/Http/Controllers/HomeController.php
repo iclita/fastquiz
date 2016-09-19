@@ -41,7 +41,7 @@ class HomeController extends Controller
      */
     public function login()
     {
-        return redirect()->route('home')->with('error', 'You must log in first');
+        return redirect()->route('home')->with('error', trans('home.login'));
     }
 
     /**

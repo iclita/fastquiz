@@ -16,6 +16,8 @@ return [
 		'my_articles' => 'My Articles',
 		'logout' => 'Logout',
 	],
+	'login' => 'You must login first!',
+	'no_questions' => 'No questions added yet!',
     'motto' => 'Test your knowledge speed',
     'fast' => 'Are you fast enough?',
     'sign_in' => 'Sign in with Facebook',

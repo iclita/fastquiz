@@ -30,6 +30,10 @@ class GameController extends Controller
     {
     	$question = Question::random();
 
+    	if (is_null($question)) {
+    		return back()->with('error', trans('home.no_questions'));
+    	}
+
     	$alias = $question->getTemporaryAlias();
 
     	$data = json_encode([
