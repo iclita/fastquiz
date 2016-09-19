@@ -26,7 +26,7 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command('fastquiz:reset-game --queue')
                  ->monthly()
-                 ->at('00:00');
-                 // ->thenPing(env('RESET_GAME'));
+                 ->at('00:00')
+                 ->thenPing(env('RESET_GAME_HEARTBEAT'));
     }
 }
