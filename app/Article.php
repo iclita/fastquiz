@@ -6,10 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 use Sofa\Eloquence\Eloquence;
 use App\Services\HasCategory;
 use App\Services\CheckStatus;
+use App\Services\SetsLanguage;
 
 class Article extends Model
 {
-	use Eloquence, HasCategory, CheckStatus;
+	use Eloquence, HasCategory, CheckStatus, SetsLanguage;
 	
 	/**
 	 * The database table used by the model.
@@ -23,7 +24,7 @@ class Article extends Model
      *
      * @var array
      */
-    protected $fillable = ['title', 'content', 'category_id', 'status', 'score'];
+    protected $fillable = ['title', 'content', 'category_id', 'status', 'score', 'lang'];
 
     /**
      * The colums that are searchable.

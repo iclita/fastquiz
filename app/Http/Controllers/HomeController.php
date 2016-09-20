@@ -18,7 +18,7 @@ class HomeController extends Controller
      *
      * @var array
      */
-    private $acceptedLanguages = ['en', 'de', 'ro'];
+    private $acceptedLanguages = ['en', 'de'];
 
 	/**
      * Home page.
@@ -27,7 +27,11 @@ class HomeController extends Controller
      */
     public function home()
     {
-        $articles = Article::latest()->take(8)->get();
+        $lang = app()->getLocale('en');
+
+        $articles = Article::where('lang', $lang)->latest()
+                                                 ->take(8)
+                                                 ->get();
 
         $articles->load('user');
 

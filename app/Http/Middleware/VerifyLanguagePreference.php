@@ -14,7 +14,7 @@ class VerifyLanguagePreference {
      *
      * @var array
      */
-    private $acceptedLanguages = ['en', 'de', 'ro'];
+    private $acceptedLanguages = ['en', 'de'];
 
 	/**
 	 * Handle an incoming request.

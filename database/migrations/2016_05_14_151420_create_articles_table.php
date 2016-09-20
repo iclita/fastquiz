@@ -21,7 +21,8 @@ class CreateArticlesTable extends Migration
             $table->string('title');
             $table->text('content');
             $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');
-            $table->tinyInteger('score')->default(0); 
+            $table->tinyInteger('score')->default(0);
+            $table->char('lang', 2); 
             $table->timestamps();
         });
 

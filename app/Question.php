@@ -6,11 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 use Sofa\Eloquence\Eloquence;
 use App\Services\HasCategory;
 use App\Services\CheckStatus;
+use App\Services\SetsLanguage;
 use DB;
 
 class Question extends Model
 {
-    use Eloquence, HasCategory, CheckStatus;
+    use Eloquence, HasCategory, CheckStatus, SetsLanguage;
 	
 	/**
 	 * The database table used by the model.
@@ -24,7 +25,7 @@ class Question extends Model
      *
      * @var array
      */
-    protected $fillable = ['description', 'choice_a', 'choice_b', 'choice_c', 'choice_d', 'correct', 'category_id', 'status', 'score'];
+    protected $fillable = ['description', 'choice_a', 'choice_b', 'choice_c', 'choice_d', 'correct', 'category_id', 'status', 'score', 'lang'];
 
     /**
      * The colums that are searchable.
@@ -120,11 +121,13 @@ class Question extends Model
     {
     	$table = (new static)->getTable();
 
+    	$lang = app()->getLocale('en');
+
     	$data = collect(
     				DB::select(
 						"SELECT t1.id FROM $table AS t1 
 						JOIN (SELECT (RAND() * (SELECT MAX(id) FROM $table)) AS id) AS t2
-						WHERE t1.status = 'approved' AND t1.id >= t2.id
+						WHERE t1.status = 'approved' AND t1.lang = '$lang' AND t1.id >= t2.id
 						ORDER BY t1.id ASC
 						LIMIT 1"
 					)

@@ -86,11 +86,6 @@
                                             <span class="flag-icon flag-icon-de"></span>&nbsp;@lang('home.menu.de')
                                         </a>
                                     </li>
-                                    <li class="scroll">
-                                        <a class="logout" href="{{ route('change-language') }}?lang=ro&url={{ Request::fullUrl() }}">
-                                            <span class="flag-icon flag-icon-ro"></span>&nbsp;@lang('home.menu.ro')
-                                        </a>
-                                    </li>
                                 </ul>
                             </div>
                          </li>
