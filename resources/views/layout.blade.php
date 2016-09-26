@@ -24,6 +24,7 @@
     <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
 </head><!--/head-->
 <body>
+    @include('vendor.analytics')
     <div class="preloader">
         <div class="preloder-wrap">
             <div class="preloder-inner"> 
