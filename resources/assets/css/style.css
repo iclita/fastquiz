@@ -1560,10 +1560,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn-facebook {
-	width: 20%;
+	width: 100%;
 	margin: 0 auto;
 	font-size: 18px;
-	max-width: 260px;
+	max-width: 300px;
 	min-width: 250px;
 	text-align: center;
 }
@@ -1600,6 +1600,8 @@ h1, h2, h3, h4, h5, h6 {
 	border-radius: 50%;
     max-height: 50px;
     max-width: 50px;
+    min-width: 50px;
+    min-height: 50px;
 }
 
 .message-box {
