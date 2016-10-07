@@ -45,7 +45,7 @@
                         <div class="col-sm-4">
                             <div class="single-service">
                                 {!! $step['icon'] !!}
-                                <h2>{{ $step['title'] }}</h2>
+                                <h3>{{ $step['title'] }}</h3>
                                 <p>{{ $step['description'] }}</p>
                             </div>
                         </div>

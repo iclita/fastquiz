@@ -10,7 +10,8 @@
     <title>@yield('title')</title> 
 
     <!-- GOOGLE FONTS -->
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto" />
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+    <!-- <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto" /> -->
 
     <link rel="stylesheet" type="text/css" href="{{ cached_asset('css/app.css') }}" />
     
