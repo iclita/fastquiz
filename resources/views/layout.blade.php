@@ -60,7 +60,7 @@
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> 
                         <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> 
                     </button> 
-                    <a class="navbar-brand" href="/"><h1><img src="/images/logo.png" alt="logo"></h1></a> 
+                    <a class="navbar-brand" href="/"><h1><img width="200" src="/images/logo.png" alt="logo"></h1></a> 
                 </div> 
                 @endif 
 
