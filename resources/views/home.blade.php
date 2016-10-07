@@ -73,7 +73,7 @@
                     </a>
                     <h4><strong>{{ short($article->title, 25) }}</strong></h4>
                     <div class="blog-content">
-                        <p>{{ short($article->content, 100) }}</p>
+                        <p>{{ short($article->content, 110) }}</p>
                     </div>
                     <a href="" class="btn btn-primary" data-toggle="modal" data-target="#blog-{{ $article->id }}">@lang('home.read_more')</a>
                 </div>

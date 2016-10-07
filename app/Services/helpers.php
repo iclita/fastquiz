@@ -10,7 +10,7 @@ if ( ! function_exists('short'))
 	 * @param  string  $append
 	 * @return string
 	 */
-	function short($string, $length=40, $append='..')
+	function short($string, $length=40, $append='...')
 	{
 		if (mb_strlen($string.$append) > $length) {
 			$endPosition = $length - mb_strlen($append);
