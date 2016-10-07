@@ -1108,6 +1108,8 @@ h1, h2, h3, h4, h5, h6 {
 	width:50%;
 	max-width: 125px;
 	max-height: 125px;
+	min-width: 125px;
+    min-height: 125px;
 	margin-bottom:20px;
 	-moz-border-radius: 50%;
 	-webkit-border-radius: 50%;
