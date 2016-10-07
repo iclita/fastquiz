@@ -65,7 +65,7 @@
                 </div> 
                 @endif 
 
-                <div class="collapse navbar-collapse">
+                <div class="collapse navbar-collapse menu-navbar">
 
                     <ul class="nav navbar-nav navbar-right"> 
                         @if (Request::is('/'))
