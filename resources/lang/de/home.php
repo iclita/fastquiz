@@ -43,7 +43,7 @@ return [
 		],
 		[
 			'icon' => '<i class="fa fa-pencil" aria-hidden="true"></i>',
-			'title' => 'Add Resources',
+			'title' => 'Ressourcen hinzufügen',
 			'description' => 'Schreib Fragen und kurze Artikel um Punkte zu bekommen. Vorsicht: Alle Fragen und Artikel werden zuerst von uns genehmigt, bevor die auf dem Webseite erscheinen. Jede Artikel, wenn gültig, bringt dich 5 Punkte. Wenn der Artikel nicht gültig ist, verlierst du 5 Punkte. Das gleiche gilt für Fragen, nur dass jede Frage zählt 3 Punkte.',
 		],
 		[
