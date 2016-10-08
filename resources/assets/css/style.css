@@ -1728,6 +1728,9 @@ select.form-control {
 	.next-container {
 		margin-top: -5px !important;
 	}
+	.first-item-panel {
+		margin-top: -5px !important;
+	}
 }
 
 .question-choice {
