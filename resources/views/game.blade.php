@@ -37,8 +37,8 @@
         </div>
     </div>
 
-    <div style="text-align:center;" class="col-md-6 col-md-offset-3">
-      <a style="font-size: 20px; width:50%;" href="{{ route('play') }}" class="btn btn-info material-box">@lang('home.next')</a>
+    <div class="col-md-6 col-md-offset-3 next-container">
+      <a href="{{ route('play') }}" class="btn btn-info material-box">@lang('home.next')</a>
     </div>
 
   </div>

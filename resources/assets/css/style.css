@@ -1708,6 +1708,15 @@ select.form-control {
 	text-decoration: underline;
 }
 
+.next-container {
+	text-align: center;
+}
+
+.next-container > a {
+	font-size: 20px; 
+	width: 50%;
+}
+
 .card-container {
 	margin-top: 50px;
 }
@@ -1715,6 +1724,9 @@ select.form-control {
 @media screen and (max-width: 992px) {
 	.card-container {
 		margin-top: 0 !important;
+	}
+	.next-container {
+		margin-top: -5px !important;
 	}
 }
 
