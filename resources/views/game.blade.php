@@ -7,7 +7,7 @@
 @section('content')
 
 <div class="container profile-container">
-  <div style="margin-top:75px;" class="row card-container">
+  <div class="row card-container">
     <div class="col-md-8 col-md-offset-2">
       <div class="progress material-box">
         <div class="progress-bar counter-bar progress-bar-striped material-box" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
