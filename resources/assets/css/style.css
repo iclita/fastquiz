@@ -1712,6 +1712,12 @@ select.form-control {
 	margin-top: 50px;
 }
 
+@media screen and (max-width: 992px) {
+	.card-container {
+		margin-top: 0 !important;
+	}
+}
+
 .question-choice {
 	margin-bottom: 15px;
 }
