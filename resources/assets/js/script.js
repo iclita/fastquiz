@@ -139,6 +139,9 @@ $(document).ready(function(){
 	    }
 	});
 
+	// Firefox disables the buttons so we need to re-enable them back on page load:)
+	$('.play-choice').removeAttr('disabled');
+
 	$('[data-toggle="tooltip"]').tooltip()
 
 	$('.item-save').off('click').on('click', function(){
