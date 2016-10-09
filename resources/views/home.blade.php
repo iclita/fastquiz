@@ -93,7 +93,7 @@
                 </div>
             </div>            
             @empty
-            <h1>NO ARTICLES YET!!!</h1>
+            <h1 style="text-align:center;">NO ARTICLES YET!!!</h1>
             @endforelse
         </div> 
     </div> 
