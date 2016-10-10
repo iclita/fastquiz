@@ -7,6 +7,15 @@
     <meta name="keywords" content="quiz, question, article, general knowledge" /> 
     <meta name="author" content="FastQuiz" /> 
     <meta name="csrf-token" content="{{ csrf_token() }}" />
+
+    <meta property="fb:app_id"        content="{{ config('services.facebook.client_id') }}" />
+    <meta property="og:url"           content="{{ url('/') }}" />
+    <meta property="og:site_name"     content="FastQuiz" />
+    <meta property="og:type"          content="article" />
+    <meta property="og:title"         content="FastQuiz - @lang('home.motto')" />
+    <meta property="og:description"   content="FastQuiz - @lang('home.fast')" />
+    <meta property="og:image"         content="{{ url('images/logo.png') }}" />
+
     <title>@yield('title')</title> 
 
     <!-- GOOGLE FONTS -->
