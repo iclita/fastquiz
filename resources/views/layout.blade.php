@@ -14,7 +14,7 @@
     <meta property="og:type"          content="article" />
     <meta property="og:title"         content="FastQuiz - Test deine Allgemeinbildung" />
     <meta property="og:description"   content="FastQuiz - Bist du schnell genug?" />
-    <meta property="og:image"         content="{{ url('images/logo.png') }}" />
+    <meta property="og:image"         content="{{ url('images/logo_big.jpg') }}" />
 
     <title>@yield('title')</title> 
 
