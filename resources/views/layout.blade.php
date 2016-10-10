@@ -12,8 +12,8 @@
     <meta property="og:url"           content="{{ url('/') }}" />
     <meta property="og:site_name"     content="FastQuiz" />
     <meta property="og:type"          content="article" />
-    <meta property="og:title"         content="FastQuiz - @lang('home.motto')" />
-    <meta property="og:description"   content="FastQuiz - @lang('home.fast')" />
+    <meta property="og:title"         content="FastQuiz - Test deine Allgemeinbildung" />
+    <meta property="og:description"   content="FastQuiz - Bist du schnell genug?" />
     <meta property="og:image"         content="{{ url('images/logo.png') }}" />
 
     <title>@yield('title')</title> 
